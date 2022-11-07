@@ -1,8 +1,11 @@
-title: Just the Docs Template
-description: A starter template for a Jeykll site using the Just the Docs theme!
+title: Climb_and_Dive
+description: An Advanced Control Line Timer
 theme: just-the-docs
+color_scheme: light
 
-url: https://just-the-docs.github.io
+logo: "/assets/images/CircuitFlyer.png"
+
+url: https://circuitflyer.com/
 
 aux_links:
-  Template Repository: https://github.com/just-the-docs/just-the-docs-template
+  Template Repository: https://github.com/CircuitFlyer/Climb_and_Dive
