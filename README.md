@@ -2,114 +2,12 @@
 
 ## An Open Source Control Line Timer Project
 
-Touch and Go is an open source software program to create your own basic timer for an electric powered control line model aircraft.  Utilizing a $9 Adafruit Industries Trinket M0 microcontroller development board the timer is compact, light-weight and simple to use.   With a few taps of your finger the timer can be quickly programmed at the flying field to change the time delay before start-up, the length of the flight and the RPM setting of the motor.  Because it’s open source, you can customize the functionality to your liking or even add new features.
+Climb and Dive is an open source software program to create your own advanced timer for an electric powered control line model aircraft.  How advanced?  How about an active, governor timer with wireless programming.  Utilizing an inexpensive microcontroller development board in conjunction with an additional circuitboard the timer is compact, light-weight and very simple to make and use.   Without opening any hatches or disconnecting any plugs the timer can be quickly programmed at the flying field using a Bluetooth application on your smartphone.  Because it’s open source, you can customize the functionality to your liking or even add new features.
 
 ## Project Philosophy
 
-This project developed from a desire to promote interest in electric powered control line.  The target user groups are the beginner and novice flyers up to the more advanced sport flyer.  It is intended to adhere to the basic KISS principle; minimal components and simple to make, program and operate.  I wanted it to be easy to change settings at the field without needing any tools or having to connect to any other devices. Based on these ideals, low cost becomes a positive byproduct.
+This project is a progression of the original more basic Touch and Go timer.  I wanted to combine all of the positive features of other timers into one compact unit.  The target user group for this timer is first time beginners to novice flyers all the way up to more advanced stunt flyers.  It's still intended to adhere to the basic KISS principle; minimal components, built-in safety features and simple to make and operate without overly complex programming requirements.  I also wanted it to be easy as possible to change settings at the field without having to purchase or use any other attachments.
 
 ## Instructions
 
-Detailed assembly, programming and operating instructions can be found in the instruction manual as a downloadable PDF file from a link on my GitHub Pages, [www.circuitflyer.com](https://circuitflyer.com)  The program files can be downloaded from the web page or from the release tab above.
-
-This is a *bare-minimum* template to create a [Jekyll] site that:
-
-- uses the [Just the Docs] theme;
-- can be built and published on [GitHub Pages];
-- can be built and previewed locally, and published on other platforms.
-
-More specifically, the created site:
-
-- uses a gem-based approach, i.e. uses a `Gemfile` and loads the `just-the-docs` gem;
-- uses the [GitHub Pages / Actions workflow] to build and publish the site on GitHub Pages.
-
-To get started with creating a site, just click "[use this template]"!
-
-After completing the creation of your new site on GitHub, update it as needed:
-
-## Replace the content of the template pages
-
-Update the following files to your own content:
-
-- `index.md` (your new home page)
-- `README.md` (information for those who access your site repo on GitHub)
-
-## Changing the version of the theme and/or Jekyll
-
-Simply edit the relevant line(s) in the `Gemfile`.
-
-## Adding a plugin
-
-The Just the Docs theme automatically includes the [`jekyll-seo-tag`] plugin.
-
-To add an extra plugin, you need to add it in the `Gemfile` *and* in `_config.yml`. For example, to add [`jekyll-default-layout`]:
-
-- Add the following to your site's `Gemfile`:
-
-  ```ruby
-  gem "jekyll-default-layout"
-  ```
-
-- And add the following to your site's `_config.yml`:
-
-  ```yaml
-  plugins:
-    - jekyll-default-layout
-  ```
-
-Note: If you are using a Jekyll version less than 3.5.0, use the `gems` key instead of `plugins`.
-
-## Publishing your site on GitHub Pages
-
-1.  If your created site is `YOUR-USERNAME/YOUR-SITE-NAME`, update `_config.yml` to:
-
-    ```yaml
-    title: YOUR TITLE
-    description: YOUR DESCRIPTION
-    theme: just-the-docs
-
-    url: https://YOUR-USERNAME.github.io/YOUR-SITE-NAME
-
-    aux_links: # remove if you don't want this link to appear on your pages
-      Template Repository: https://github.com/YOUR-USERNAME/YOUR-SITE-NAME
-    ```
-
-2.  Push your updated `_config.yml` to your site on GitHub.
-
-3.  In your newly created repo on GitHub:
-    - go to the `Settings` tab -> `Pages` -> `Build and deployment`, then select `Source`: `GitHub Actions`.
-    - if there were any failed Actions, go to the `Actions` tab and click on `Re-run jobs`.
-
-## Building and previewing your site locally
-
-Assuming [Jekyll] and [Bundler] are installed on your computer:
-
-1.  Change your working directory to the root directory of your site.
-
-2.  Run `bundle install`.
-
-3.  Run `bundle exec jekyll serve` to build your site and preview it at `localhost:4000`.
-
-    The built site is stored in the directory `_site`.
-
-## Publishing your built site on a different platform
-
-Just upload all the files in the directory `_site`.
-
-## Customization
-
-You're free to customize sites that you create with this template, however you like!
-
-[Browse our documentation][Just the Docs] to learn more about how to use this theme.
-
-----
-
-[^1]: [It can take up to 10 minutes for changes to your site to publish after you push the changes to GitHub](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll#creating-your-site).
-
-[Jekyll]: https://jekyllrb.com
-[Just the Docs]: https://just-the-docs.github.io/just-the-docs/
-[GitHub Pages]: https://docs.github.com/en/pages
-[Bundler]: https://bundler.io
-[use this template]: https://github.com/just-the-docs/just-the-docs-template/generate
-[`jekyll-default-layout`]: https://github.com/benbalter/jekyll-default-layout
-[`jekyll-seo-tag`]: https://jekyll.github.io/jekyll-seo-tag
+All of the assembly, programming and operating instructions can be found in the instruction manual on the document pages, [www.circuitflyer.com](https://circuitflyer.com)  The program files can be downloaded from the web page or from the release tab above.
