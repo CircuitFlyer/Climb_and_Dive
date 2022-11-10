@@ -1,4 +1,4 @@
-title: Climb_and_Dive
+title: Climb_and_Dive Instructions
 description: An Advanced Control Line Timer
 theme: just-the-docs
 color_scheme: light
@@ -8,4 +8,8 @@ logo: "/assets/images/CircuitFlyer.png"
 url: https://circuitflyer.com/
 
 aux_links:
-  Template Repository: https://github.com/CircuitFlyer/Climb_and_Dive
+  Climb_and_Dive on Github: https://github.com/CircuitFlyer/Climb_and_Dive
+
+callouts:
+  highlight:
+      color: yellow
