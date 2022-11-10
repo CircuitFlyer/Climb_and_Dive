@@ -22,26 +22,28 @@ A quick note about USB C cables: If you have trouble getting the disk drive to s
 Plug in your board into your computer with a USB C data cable.  I will look like nothing happened. Don't worry, follow this simple procedure to install CircuitPython and get the `CIRCUITPY` drive to appear.
 
 **Step 1** Enter Bootloader mode<br>
-Before we install CircuitPython to Seeed Studio XIAO nRF52840, it needs to be in bootloader mode. Enter the bootloader mode by the clicking the tiny Reset Button **twice**:
+Before we install CircuitPython to the Seeed Studio XIAO nRF52840, it needs to be in bootloader mode. Enter the bootloader mode by the clicking the tiny Reset Button **twice**:
 
 ![](assets/images/XiaoBle.png)
 
 Then the `XAIO-SENSE` disk drive will show up:
 
-image
+![](assets/images/Xiao-sense.png)
 
 **Step 2** Drag the CircuitPython .uf2 file that you downloaded and drop it onto the `XAIO-SENSE` drive.<br>
 
-image
+![](assets/images/Xiao-circuitpython.png)
 
 **Step 3** The disk drive will automatically exit bootloader mode and the name will change to `CIRCUITPY`.
+
+![](assets/images/Xiao-circuitpy.png)
 
 Congratulations, you have successfully installed CircuitPython.  That was easy.
 
 ### Installing the Program Code and Library Files: ###
 **Step 4** Drag the code.py file and the lib folder that you downloaded and drop it onto the `CIRCUITPY` drive.
 
-image
+![](assets/images/Code-circuitpy.png)
 
 Congratulations, you should now have a Climb_and_Drive timer.  The LED on the Xiao should now illuminate green to indicate that it's currently in Standby Mode.  That was even easier.
 
