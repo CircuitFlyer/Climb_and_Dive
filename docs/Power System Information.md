@@ -22,7 +22,7 @@ Note: The features described may or may *not* be present in the ESC you are usin
 | RPM Governing | OFF |
 | Brake setting | ON |
 | Soft start | OFF |
-| BEC Voltage Output | 5.0v or 5.5v Maximum |
+| BEC Voltage Output | 5.0V or 5.5V Maximum |
 
 
 The timer PWM signal covers a very wide throttle range and ESC throttle calibration is not likely required.  If you think your ESC requires throttle calibration and your instructions call for the RC transmitter stick to be at maximum throttle at power-up:
