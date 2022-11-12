@@ -9,3 +9,5 @@ nav_order: 7
 {: .text-right}
 
 ## Frequently Asked Questions ##
+
+What is bootout.txt
