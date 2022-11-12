@@ -11,3 +11,7 @@ nav_order: 7
 ## Frequently Asked Questions ##
 
 What is bootout.txt
+
+Lack of blip? see ESC throttle calibration
+
+Circuitpython info

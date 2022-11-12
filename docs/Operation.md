@@ -11,11 +11,7 @@ has_children: true
 
 ## Operating Instructions ##
 
-Note, leave sone head room on RPM
-Lack of blip? see ESC throttle calibration
-
-
-Install and connect the ESC as discussed in the assembly instructions.
+Install the timer and connect to the ESC as discussed in the assembly instructions.
 
 The tri-colour LED is used to communicate the different modes of operation.  The capacitive touch pin is used for operator input.  This is similar to the touch sensitive screen on a smart-phone.  (Hint: As the conductivity of the average fingertip can vary, adding a bit of moisture to your fingertip will greatly improve the touch response.)
 
