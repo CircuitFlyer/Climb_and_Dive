@@ -45,7 +45,7 @@ Programming the microcontroller is as easy as dragging and dropping a few files 
 
 - Auto shutdown if motor fails to reach programmed RPM on takeoff.
 
-- For added safety, a pilot initiated shutdown can be triggered at any time during the flight by simply pulling on the handle 3 times.
+- For added safety, a pilot initiated shutdown can be triggered at any time during the flight by repeatedly pulling on the handle.  (Note: This feature is considered experimental and still under development).
 
 - Should an auto shutdown occur, the onboard LED will flash a sequence of fault codes to aid in troubleshooting.
 
