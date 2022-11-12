@@ -45,4 +45,4 @@ Be sure to wait about a second between each set of taps for the RPM to change. U
 When the desired RPM is reached:<br>
 **3 TAPS TO STOP THE MOTOR.**<br>
 
-**Step 4** - 4 taps to exit the programming mode and return to Standby (green).  Any new settings you enter will automatically be saved to memory and used for subsequent flights
+**Step 4** - 4 taps to exit the programming mode and return to Standby (green).  Any new settings you enter will automatically be saved to memory and used for subsequent flights.
