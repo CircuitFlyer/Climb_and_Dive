@@ -13,10 +13,16 @@ nav_order: 1
 
 | Programmable Setting | Allowable Range | Default Setting |
 | --- | :---: | :---: |
-| Start Delay Time | 0 to x | 10 Seconds |
-| Flight Time | 1 to 300 | 180 Seconds |
-| Motor RPM | 3500 to 15000 | 10000 |
+| Start Delay Time | 0 to 60 | 10 Seconds |
+| Flight Time | 1 to 360 | 180 Seconds |
+| Motor RPM | 5000 to 15000 | 10000 |
 | Climb Gain | 0 to 10 | 5 |
 | Dive Gain | 0 to 10 | 5 |
 | Motor Acceleration | 1 to 10 | 5 |
-| Number of Motor Poles | 2 to 20 | 14 |
+| Number of Motor Poles | 2 to 24 | 14 |
+
+![](assets/images/Bluefruit 1.png)
+
+![](assets/images/Bluefruit 2.png)
+
+![](assets/images/Bluefruit 3.png)
