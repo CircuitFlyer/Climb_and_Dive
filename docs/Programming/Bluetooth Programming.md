@@ -11,7 +11,6 @@ nav_order: 1
 
 ## Bluetooth Programming Instructions ##
 
-<br>
 ### Settings ###
 
 There are several features of the the timer that you can customize based on a user programmable setting.
