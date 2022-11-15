@@ -34,6 +34,6 @@ The timer PWM signal covers a very wide throttle range and ESC throttle calibrat
 
 ## Motor Information ##
 
-In order for the timer to accurately determine the motor RPM you must know the number of magnetic poles used in your motor.  14 poles if the default choice but some motors use a different number.  You can find the number of magnet poles used in you motor documentation or by counting the number of magnet segments glued around the inside of the rotating part of the motor.  Be sure *not* to count the number of stationary copper windings.
+In order for the timer to accurately determine the motor RPM you must know the number of magnetic poles used in your motor.  14 poles if the default choice but some motors use a different number.  The number of magnetic poles  can be found in you motor documentation or by counting the number of magnet segments glued around the inside of the rotating part of the motor.  Be sure *not* to count the number of stationary copper windings.
 
-Please refer to the timer Bluetooth programming section for where to enter this information.
+Please refer to the timer Bluetooth programming section for information on where to enter this information.

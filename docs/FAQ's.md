@@ -15,3 +15,5 @@ What is bootout.txt
 Lack of blip? see ESC throttle calibration
 
 Circuitpython info
+
+BLE range
