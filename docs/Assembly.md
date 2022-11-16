@@ -18,7 +18,7 @@ If you prefer to purchase items separately here are some suggested sources:
 | :---: | ----------- | ------------- |
 | 1 | Seed Studio Xiao nRF52840<br>(The cheaper one, not the 'Sense' version) | [Digikey][9]<br>[Mouser][10]<br>[Seeed Studio][11]  |
 | 1 | Climb_and_Dive Backpack |  |
-| 1 | Right Angle Header Strip, 5 position | [Mouser][5]<br>[Digikey][6]<br>[Sparkfun][3]<br>[Adafruit][4] |
+| 1 | Right Angle Header Strip, Single Row, 5 Position | [Mouser][5]<br>[Digikey][6]<br>[Sparkfun][3]<br>[Adafruit][4] |
 | 1 | JST Battery Connector (Optional) | [HobbyTown][7]<br>[Amazon][8] |
 
 ## Tools Required ##
@@ -30,13 +30,13 @@ Electronic soldering equipment; soldering iron, flux and solder.  These are avai
 The boards as supplied include strips of breakaway header pins.  Solder as shown in the photos below.  Be careful to orient the boards correctly as shown.
 
 
-When connecting the ESC be sure the connector ground wire (brown or black) is attached to the ground pin on the board.  Connect the backpack motor pins to any two of the three motor wires.  For convenience I use a JST battery style connector (for reference the correct manufacturers name is a JST-RYC connector).
+When connecting the ESC be sure the connector ground wire (brown or black) is attached to the ground pin on the board.  Connect the backpack motor pins to any two of the three motor wires.  For convenience I use a JST battery style connector (for reference: the correct manufacturers name is a JST-RYC connector).
 
 Solder
 
 Solder
 
-Cut the header pins as shown.
+Cut the header pins as shown.  Optional push-button switch connections.
 
 Installation
 
