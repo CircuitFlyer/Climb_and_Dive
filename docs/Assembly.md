@@ -41,7 +41,7 @@ Solder
 Now you can cut off the long header pins that you don't need.  Do *not* cut the touch pin, leave it sticking out.
 
 {: .highlight }
-Note: If you prefer, the program code does include provisions to use an *optional* push-button switch instead of the touch pin.  If you want to use a push-button switch it will connect to the timer using the 2 pins as shown below.  Depending how you want to connect your switch, you may want to leave those two pins sticking out as well.  The push-button switch will function exactly the same as the touch pin.
+Note: If you prefer, the program code does include provisions to use an *optional* push-button switch instead of the touch pin.  If you want to use a push-button switch it will connect to the timer using the 2 pins as shown below.  Depending how you want to connect your switch, you may want to leave those two pins sticking out as well.  The push-button switch functions exactly the same as the touch pin.
 
 Installation
 
