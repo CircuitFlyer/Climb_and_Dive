@@ -78,7 +78,7 @@ The UART module will open but the screen will be blank.
 
 ![](assets/images/Bluefruit 5.5.png)
 
-**Step 8** - enter the new setting you would like and press **Send**.  The timer will then list all of the parameters again including the one you just changed.
+**Step 8** - enter the new setting you would like to use and press **Send**.  The timer will then list all of the parameters again including the one you just changed.
 
 Repeat steps 7 and 8 for any other settings you would like to change.  
 

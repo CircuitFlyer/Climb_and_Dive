@@ -38,11 +38,16 @@ Solder
 
 Solder
 
-Cut the header pins as shown.  Optional push-button switch connections.
+Now you can cut off the long header pins that you don't need.  Do *not* cut the touch pin, leave it sticking out.
+
+{: .highlight }
+Note: If you prefer, the program code does include provisions to use an *optional* push-button switch instead of the touch pin.  If you want to use a push-button switch it will connect to the timer using the 2 pins as shown below.  Depending how you want to connect your switch, you may want to leave those two pins sticking out as well.  The push-button switch will function exactly the same as the touch pin.
 
 Installation
 
-The flat bottom of the timer must be installed on a vertical part of the aircraft with the ESC/Motor header pins pointing forward and the component side of the timer facing the pilot.  Although not super-critical, the long side of the timer should be installed so that it is horizontal when the aircraft is flying straight and level.  Calibration of the accelerometer is not required.
+The flat bottom of the timer must be installed on a vertical part of the aircraft with the ESC/Motor connection pins pointing forward and the component side of the timer facing the pilot.  Although not super-critical, the long side of the timer should be installed so that it is horizontal when the aircraft is flying straight and level.  Calibration of the accelerometer is not required.
+
+A couple of pieces of adhesive backed hook and loop fastener make quick work of mounting the timer in position.
 
 [1]: https://learn.adafruit.com/adafruit-guide-excellent-soldering
 [2]: https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering?_ga=2.264399628.2047829894.1668554338-987389297.1656854053
