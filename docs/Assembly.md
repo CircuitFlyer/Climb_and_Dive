@@ -27,10 +27,12 @@ Electronic soldering equipment; soldering iron, flux and solder.  These are avai
 
 ## Assembly ##
 
-The boards as supplied include strips of breakaway header pins.  Solder as shown in the photos below.  Be careful to orient the boards correctly as shown.
+The boards as supplied include strips of breakaway header pins.  Solder as shown in the photos below.  Be careful to orient the boards correctly as shown.  The USB C port must be on the end opposite the ESC/Motor connection pins.
 
 
-When connecting the ESC be sure the connector ground wire (brown or black) is attached to the ground pin on the board.  Connect the backpack motor pins to any two of the three motor wires.  For convenience I use a JST battery style connector (for reference: the correct manufacturers name is a JST-RYC connector).
+When connecting the ESC be sure the connector ground wire (brown or black) is attached to the ground pin on the board, labeled **GND**.  Connect the backpack motor pins to any two of the three motor wires.  For convenience I use a JST battery style connector (for reference: the correct manufacturers name is a JST-RYC connector).
+
+![](assets/images/Climb_and_Dive Connection Diagram.png)
 
 Solder
 
@@ -39,6 +41,8 @@ Solder
 Cut the header pins as shown.  Optional push-button switch connections.
 
 Installation
+
+The flat bottom of the timer must be installed on a vertical part of the aircraft with the ESC/Motor header pins pointing forward and the component side of the timer facing the pilot.  Although not super-critical, the long side of the timer should be installed so that it is horizontal when the aircraft is flying straight and level.  Calibration of the accelerometer is not required.
 
 [1]: https://learn.adafruit.com/adafruit-guide-excellent-soldering
 [2]: https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering?_ga=2.264399628.2047829894.1668554338-987389297.1656854053
