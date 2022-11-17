@@ -5,7 +5,7 @@ nav_order: 1
 ---
 
 ## **Climb_and_Dive** ##
-{: .text-blue-000}
+{: .text-blue-100}
 {: .text-right}
 
 ## Overview ##

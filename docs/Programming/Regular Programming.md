@@ -6,7 +6,7 @@ nav_order: 2
 ---
 
 ## **Climb_and_Dive** ##
-{: .text-blue-000}
+{: .text-blue-100}
 {: .text-right}
 
 ## Programming Without a Wireless Connection ##

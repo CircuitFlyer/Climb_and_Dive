@@ -5,7 +5,7 @@ nav_order: 7
 ---
 
 ## **Climb_and_Dive** ##
-{: .text-blue-000}
+{: .text-blue-100}
 {: .text-right}
 
 ## Frequently Asked Questions ##
@@ -14,7 +14,7 @@ nav_order: 7
 
 **Can I extend the touch sensor pin?**  Yes, in theory.  You will have to experiment to make sure it works reliably, but you can add a wire to the touch sensor pin to extend the ‘sensor’ to another location.
 
-**Why don't I get the  one second throttle blip when I start the timer?**  If your ESC has a procedure for throttle calibration, try that, it may help.  See Power System Information.
+**Why don't I get the  one second throttle blip when I start the timer?**  If your ESC has a procedure for throttle calibration, try that, it may help.  See [ESC Information](Power System Information#ESC Information).
 
 **Is a Bluetooth wireless connection allowed in competition?**  The Bluetooth radio is turned on *only* while the timer is in the programming mode.  Therefore the Bluetooth connection cannot be construed as to provide any control of the aircraft during flight.  Bluetooth is 2.4GHz spread spectrum technology.  The timer uses low energy Bluetooth transmitted through a very small onboard antenna which limits it's usefull range to about 30 feet, or 10 meters, maximum.
 
