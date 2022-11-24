@@ -18,6 +18,9 @@ The timer is available as a DIY kit that only requires soldering some header pin
 
 Programming the microcontroller is as easy as dragging and dropping a few files on your computer.  The program code also includes a few features that can add an additional layer of safety to protect your power system in case something doesn't go as expected.
 
+<span class="fs-6">
+[Click Here to order a **Climb_and_Dive** kit on Tindie](https://www.tindie.com/products/28568/){: .btn .btn-green}
+</span>
 
 ## List of Features ##
 

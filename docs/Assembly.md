@@ -10,7 +10,7 @@ nav_order: 2
 
 ## Bill of Materials ##
 
-Complete project kits can be purchased on Tindie.  Each kit comes complete with the program code already installed and  the circuitboards fully tested.
+Complete project kits can be purchased on [**Tindie**][12].  Each kit comes complete with the program code already installed and  the circuitboards fully tested.
 
 If you prefer to purchase items separately here are some suggested sources:
 
@@ -67,3 +67,4 @@ Connect the backpack motor pins to any two of the three motor wires.  For conven
 [9]: https://www.digikey.com/en/products/detail/seeed-technology-co-ltd/102010448/16652893?s=N4IgTCBcDaIIwFYCcB2AtHADGTWAseAHGgHIAiIAugL5A
 [10]: https://www.mouser.com/ProductDetail/Seeed-Studio/102010448?qs=Znm5pLBrcAJ5g%252BWAkitg4w%3D%3D
 [11]: https://www.seeedstudio.com/Seeed-XIAO-BLE-nRF52840-p-5201.html
+[12]: https://www.tindie.com/products/28568/

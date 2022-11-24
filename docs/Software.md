@@ -10,9 +10,13 @@ nav_order: 3
 
 ## Software Installation ##
 
-If you purchased a Climb_and_Dive kit complete with both boards, then the Xiao microcontroller board will come preloaded with the program code already installed and tested.  You can skip ahead to the Bluetooth app installation.  Although, in case there are requirements for future program updates, it is advisable to read through the following section so you are at least familiar with the programming procedure.
+If you purchased a **Climb_and_Dive kit** complete with both boards, then the Xiao microcontroller board will come preloaded with the program code already installed and tested.  You can skip ahead to the Bluetooth app installation.  Although, in the case where there may be requirements for future program updates, it is advisable to read through the following section so you are at least familiar with the programming procedure.
 
-If you sourced your Seeed Studio Xiao nRF52840 from another provider you will have to install CircuitPython first and then the program code and libraries.  Download the required software package here.  Unzip the download and have a look inside.  You should find a CircuitPython .uf2 file, code.py and a lib(rary) folder.
+If you sourced your Seeed Studio Xiao nRF52840 from another provider you will have to install CircuitPython first and then the program code and libraries.  Dont' worry, it's easy.
+
+Download the required software package here.  
+
+Unzip the download and have a look inside.  You should find a CircuitPython .uf2 file, code.py and a lib(rary) folder.
 
 {: .highlight }
 A quick note about USB C cables: If you have trouble getting the disk drive to show up on your computer there is a possibility you are not using a data cable.  There may be some USB cables that are used for charging only and are not data transfer cables.  Be sure you have the right one.
