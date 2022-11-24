@@ -29,4 +29,4 @@ The motor fails to reach the assigned governing RPM.  The motor will operate for
 It is important to make sure your power system can achieve the desired RPM before programming the timer.
 
 **4 Red Flashes**<br>
-If there is a need to shutdown before the flight is complete, the pilot can initiate a shutdown while the aircraft is flying in an upright level condition by repeatedly pulling on the handle 3 to 6 times.  This action will cause the motor to stop immediately.  At the moment, this feature is considered experimental as it can be difficult to activate and needs further development.
+If there is a need to shutdown before the flight is complete, the pilot can initiate a shutdown while the aircraft is flying in an upright level condition by repeatedly pulling on the handle 3 to 6 times.  This action will cause the motor to stop immediately.  **At the moment, this feature is considered experimental as it can be difficult to activate and needs further development**.

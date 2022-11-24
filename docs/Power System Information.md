@@ -25,7 +25,7 @@ Note: The features described may or may *not* be present in the ESC you are usin
 | BEC Voltage Output | 5.0V or 5.5V Maximum |
 
 
-The timer PWM signal covers a very wide throttle range and ESC throttle calibration is not likely required.  If you think your ESC requires throttle calibration and your instructions call for the RC transmitter stick to be at maximum throttle at power-up:
+The timer PWM signal covers a very wide throttle range and ESC throttle calibration is not likely required.  If you think your ESC requires throttle calibration and your instructions call for the RC transmitter stick to be at maximum throttle at power-up, use the following procedure:
 
 1. **For maximum safety**, remove the propeller from the motor.
 2. Hold the timer touch pin and connect the battery power.  The timer will then output a maximum throttle signal.
