@@ -27,10 +27,10 @@ Note: The features described may or may *not* be present in the ESC you are usin
 
 The timer PWM signal covers a very wide throttle range and ESC throttle calibration is not likely required.  If you think your ESC requires throttle calibration and your instructions call for the RC transmitter stick to be at maximum throttle at power-up, use the following procedure:
 
-1. **For maximum safety**, remove the propeller from the motor.
-2. Hold the timer touch pin and connect the battery power.  The timer will then output a maximum throttle signal.
-3. After the ESC is calibrated, release the timer touch pin.  The timer output will return to minimum throttle and the ESC should arm.
-4. Disconnect the battery and re-install the propeller.
+**Step 1** - **For maximum safety**: Remove the propeller from the motor.<br>
+**Step 2** - Hold the timer touch pin while connecting the battery power.  The timer will start up and output a maximum throttle signal.<br>
+**Step 3** - After the ESC is calibrated, release the timer touch pin.  The timer output will return to minimum throttle and the ESC should arm.<br>
+**Step 4** - Disconnect the battery and re-install the propeller.
 
 ## Motor Information ##
 

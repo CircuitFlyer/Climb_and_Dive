@@ -17,7 +17,7 @@ The tri-colour LED is used to communicate the different modes of operation.  The
 
 A long touch is a sustained touch for a minimum of 3 seconds.  A tap, or series of taps, is a single or multiple quick taps on the pin.  You will notice a 1 second delay after the last tap before the desired action takes place.  This short waiting period is needed to make sure all of the taps are complete.
 
-When you connect the battery to the ESC the timer will boot-up and the tri-colour LED will turn green (Standby Mode).  At this point the board will output an “idle” signal to the ESC.  The ESC should complete its initialization and arming sequence.
+When you connect the battery to the ESC the timer will boot up and the tri-colour LED will turn green (Standby Mode).  At this point the board will output an “idle” signal to the ESC.  The ESC should complete its initialization and arming sequence.
 The very first time the board is powered up it will load the default settings.
 
 To change any of the programmable settings please refer to the Bluetooth programming section.

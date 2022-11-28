@@ -10,11 +10,13 @@ nav_order: 3
 
 ## Software Installation ##
 
-If you purchased a **Climb_and_Dive kit** complete with both boards, then the Xiao microcontroller board will come preloaded with the program code already installed and tested.  You can skip ahead to the Bluetooth app installation.  Although, in the case where there may be requirements for future program updates, it is advisable to read through the following section so you are at least familiar with the programming procedure.
+If you purchased a **Climb_and_Dive kit** complete with both boards, then the Xiao microcontroller board will come preloaded with the program code already installed and tested.  You can skip ahead to the Bluetooth app installation.  Although, if there are future program updates, it is advisable to read through the following section so you are at least familiar with the programming procedure.
 
 If you sourced your Seeed Studio Xiao nRF52840 from another provider you will have to install CircuitPython first and then the program code and libraries.  Dont' worry, it's easy.
 
-Download the required software package here.  
+<span class="fs-6">
+[Click Here to download the latest program code package](https://www.circuitflyer.com/){: .btn .btn-blue }
+</span>
 
 Unzip the download and have a look inside.  You should find a CircuitPython .uf2 file, code.py and a lib(rary) folder.
 
@@ -23,7 +25,7 @@ A quick note about USB C cables: If you have trouble getting the disk drive to s
 
 ### Installing CircuitPython on a New Xiao nRF52840: ###
 
-Plug in your board into your computer with a USB C data cable.  I will look like nothing happened. Don't worry, follow this simple procedure to install CircuitPython and get the `CIRCUITPY` drive to appear.
+Plug in your board into your computer with a USB C data cable.  I will look like nothing happened. Don't worry.  Follow this simple procedure to install CircuitPython and get the `CIRCUITPY` drive to appear.
 
 **Step 1** - Enter Bootloader mode<br>
 Before we install CircuitPython to the Seeed Studio XIAO nRF52840, it needs to be in bootloader mode. Enter the bootloader mode by the clicking the tiny Reset Button **twice**:

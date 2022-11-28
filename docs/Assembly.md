@@ -10,15 +10,14 @@ nav_order: 2
 
 ## Bill of Materials ##
 
-Complete project kits can be purchased on [**Tindie**][12].  Each kit comes complete with the program code already installed and  the circuitboards fully tested.
+Complete project kits can be purchased on [**Tindie**][12].  Each kit comes complete with the program code already installed and  the circuit boards fully tested.
 
 If you prefer to purchase items separately here are some suggested sources:
 
 | Qty | Description | Online Sources |
 | :---: | ----------- | ------------- |
 | 1 | Seed Studio Xiao nRF52840<br>(The cheaper one, not the 'Sense' version) | [Digikey][9]<br>[Mouser][10]<br>[Seeed Studio][11]  |
-| 1 | Climb_and_Dive Backpack |  |
-| 1 | Right Angle Header Strip, Single Row, 5 Position | [Mouser][5]<br>[Digikey][6]<br>[Sparkfun][3]<br>[Adafruit][4] |
+| 1 | Climb_and_Dive Backpack w/ 5 pin RA Header Strip| === link to Tindie |
 | 1 | JST Battery Connector (Optional) | [HobbyTown][7]<br>[Amazon][8] |
 
 ## Tools Required ##
@@ -31,31 +30,31 @@ The boards as supplied include strips of breakaway header pins.  Assemble and so
 
 === pic of 2 boards and 3 header strips loose
 
-Insert the bent legs of the 5 pin right angle strip through the backpack PCB and secure with a clamp for soldering.
+**Step 1** - Insert the bent legs of the 5 pin right angle strip through the backpack PCB and hold with a clamp for soldering.
 
 === pic of backpack with 5 pin strip in place with clamp
 
-Solder the pins to the back side of the backpack as shown.
+**Step 2** - Solder the pins to the back side of the backpack as shown.
 
 === pic of solder iron tip on pins.
 
-Insert the short legs of the 7 pin header strips through the holes of the backpack.
+**Step 3** - Insert the short legs of the 7 pin header strips through the holes on the top of the backpack.
 
 === pic of backpack with 2 strips of header in place
 
-Then stack the Xiao on top of the long pins and clamp together for soldering.  Make sure it is orientated as shown.
+**Step 4** - Then stack the Xiao on top of the long pins and clamp together for soldering.  Make sure it is orientated as shown.
 
-=== pic of 2 boards stacked together.
+=== pic of 2 boards stacked together with clamp.
 
-Solder all of the short header pins on the back of the backpack.
+**Step 5** - Solder all of the short header pins on the back of the backpack.
 
 === pic of soldering back of stacked assembly.
 
-Flip it over and solder all of the longer header pins on the Xiao nRF52840.  Don't trim the long pins just yet.
+**Step 6** - Flip it over and solder all of the longer header pins on the Xiao nRF52840.  Don't trim the long pins just yet.
 
 === pic of top of xiao with solder iron
 
-Now you can trim off *only* the long header pins that you don't need.  Do *not* cut the touch pin, leave it sticking out.
+**Step 7** - Now you can trim off *only* the long header pins that you don't need.  Do *not* cut the touch pin, leave it sticking out.
 
 {: .highlight }
 Note: If you prefer, the program code does include provisions to use an *optional* push-button switch instead of the touch pin.  If you want to use a push-button switch it will connect to the timer using the 2 pins as shown below.  Depending how you want to connect your switch, you may want to leave those two pins sticking out as well.  The push-button switch functions exactly the same as the touch pin.
@@ -82,10 +81,6 @@ Connect the backpack motor pins to any two of the three motor wires.  For conven
 
 [1]: https://learn.adafruit.com/adafruit-guide-excellent-soldering
 [2]: https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering?_ga=2.264399628.2047829894.1668554338-987389297.1656854053
-[3]: https://www.sparkfun.com/products/553
-[4]: https://www.adafruit.com/product/1540
-[5]: https://www.mouser.com/ProductDetail/Harwin/M20-9754046?qs=Jph8NoUxIfUFQh%2F79tzPcQ%3D%3D
-[6]: https://www.digikey.com/en/products/detail/amphenol-cs-fci/68015-436HLF/1487576?s=N4IgTCBcDaIGwAYCcBaAzAFiQDhQOQBEACEAXQF8g
 [7]: https://www.hobbytown.com/protek-rc-jst-male-connector-leads-2-ptk-5218/p23432
 [8]: https://www.amazon.com/Silicone-Connector-SIM-NAT-Connectors/dp/B071XN7C43/ref=sr_1_16?crid=231ACQ422NRUB&keywords=jst+ryc&qid=1668614414&sprefix=jst+ryc%2Caps%2C89&sr=8-16
 [9]: https://www.digikey.com/en/products/detail/seeed-technology-co-ltd/102010448/16652893?s=N4IgTCBcDaIIwFYCcB2AtHADGTWAseAHGgHIAiIAugL5A
