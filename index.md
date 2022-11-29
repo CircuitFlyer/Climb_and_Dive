@@ -24,7 +24,7 @@ Programming the microcontroller is as easy as dragging and dropping a few files 
 
 ## List of Features ##
 
-- Dimensions: 27mm x 18mm x 9mm.  Weight: 5g
+- Dimensions: 27mm x 18mm x 9mm.  Weight: 5g.  Ideal for mounting on the side of a profile fuselage.
 
 - Capacitive touch sensor for user input.  No additional switches or buttons to wire and mount.  Although, if desired, the program code does allow for use with an optional remote pushbutton.
 
