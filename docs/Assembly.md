@@ -28,7 +28,7 @@ Electronic soldering equipment; soldering iron, flux and solder.  These are avai
 
 The boards as supplied include strips of breakaway header pins.  Assemble and solder as shown in the photos below.  Be careful to orient the boards correctly.  The USB C port must be on the end opposite the ESC/Motor connection pins.
 
-=== pic of 2 boards and 3 header strips loose
+![](assets/images/Unassembled.png)
 
 **Step 1** - Insert the bent legs of the 5 pin right angle strip through the backpack PCB and hold with a clamp for soldering.
 
