@@ -8,13 +8,15 @@ nav_order: 1
 {: .text-blue-100}
 {: .text-right}
 
+![](assets/images/Assembled 1.png)
+
 ## Overview ##
 
 Climb_and_Dive is an open source do-it-yourself project to create your own advanced timer for an electric powered control line model aircraft.  Utilizing a low cost popular microcontroller development board coupled to an add-on circuit board the timer is compact, simple to use and packed with features.
 
 You may have heard of a governing timer.  You may have heard of an active timer.  The Climb_and_Dive timer is both, an active & governing timer.  On top of that, it can be wirelessly programmed via a Bluetooth connection on a smart phone!  No more opening hatches, fiddling with connectors or programming boxes.  Because it’s open source, you can customize the functionality to your liking or even add some new features.
 
-The timer is available as a DIY kit that only requires soldering some header pins to assemble.  The kit consists of two major parts, the Seeed Studio Xiao NRF52840 development board and an additional circuit board, sometimes referred to as a backpack. The backpack contains the accelerometer and RPM signal conditioning circuitry that makes wiring and assembly fast and easy.
+The timer is available as a DIY kit that only requires soldering some header pins to assemble.  The kit consists of two major parts, the Seeed Studio Xiao NRF52840 development board and an additional circuit board, referred to as a backpack. The backpack contains the accelerometer and RPM signal conditioning circuitry that makes wiring and assembly fast and easy.
 
 Programming the microcontroller is as easy as dragging and dropping a few files on your computer.  The program code also includes a few features that can add an additional layer of safety to protect your power system in case something doesn't go as expected.
 
@@ -47,8 +49,6 @@ Programming the microcontroller is as easy as dragging and dropping a few files 
 - Auto shutdown with a loss of power or a loss of motor RPM signal.
 
 - Auto shutdown if motor fails to reach programmed RPM on takeoff.
-
-- For added safety, a pilot initiated shutdown can be triggered at any time during the flight by repeatedly pulling on the handle.  (Note: This feature is considered experimental and still under development).
 
 - Should an auto shutdown occur, the onboard LED will flash a sequence of fault codes to aid in troubleshooting.
 
