@@ -44,15 +44,15 @@ The boards as supplied include strips of breakaway header pins.  Assemble and so
 
 ![](assets/images/Xiao Clamp Top.jpg)
 
-**Step 5** - Solder all of the short header pins on the back of the backpack.
+**Step 4** - Solder all of the short header pins on the back of the backpack.
 
 ![](assets/images/Solder Xiao Back.jpg)
 
-**Step 6** - Flip it over and solder all of the longer header pins on the Xiao nRF52840.  Don't trim the long pins just yet.
+**Step 5** - Flip it over and solder all of the longer header pins on the Xiao nRF52840.  Don't trim the long pins just yet.
 
 ![](assets/images/Solder Xiao Top.jpg)
 
-**Step 7** - Now you can trim off *only* the long header pins that you don't need.  Do **not** cut the touch pin, leave it sticking out.
+**Step 6** - Now you can trim off *only* the long header pins that you don't need.  Do **not** cut the touch pin, leave it sticking out.
 
 {: .highlight }
 Note: If you prefer, the program code does include provisions to use an *optional* push-button switch instead of the touch pin.  If you want to use a push-button switch it will connect to the timer using the 2 pins as shown below.  Depending how you want to connect your switch, you may want to leave those two pins sticking out as well.  The push-button switch functions exactly the same as the touch pin.
@@ -75,7 +75,7 @@ When connecting the ESC servo connector be sure the **ground wire (brown or blac
 
 ![](assets/images/Climb_and_Dive Connection Diagram.png)
 
-Connect the backpack motor pins to any two of the three motor wires.  It doesn't matter which two.  For convenience I use a male JST battery style connector (for reference: the correct manufacturers name is a male JST-RYC connector).  Solder the JST connector leads into the back of the bullet connectors of the ESC motor wires.
+Connect the backpack motor pins to any two of the three motor wires.  It doesn't matter which two.  For convenience I use a male JST battery style connector (just for reference: the full manufacturers name is a male JST-RYC connector).  Solder the JST connector leads into the back of the bullet connectors of the ESC motor wires.
 
 ![](assets/images/Bullet Connectors.jpeg)
 
