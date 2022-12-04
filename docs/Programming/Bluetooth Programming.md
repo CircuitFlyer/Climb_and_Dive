@@ -13,7 +13,7 @@ nav_order: 1
 
 ### Settings ###
 
-There are several features of the the timer that you can customize based on a user programmable setting.
+There are several features of the the timer that you can customize based on a user programmable setting.  Bluetooth 'pairing' is not normally required.
 
 **Start Delay Time**<br>
 The start delay is programmable from 0 to 60 seconds in 1 second intervals.  This is the time delay between the motor blip when the timer sequence begins and when the motor starts up for take-off.  This gives the pilot time to walk to the handle and get ready before the motor starts.

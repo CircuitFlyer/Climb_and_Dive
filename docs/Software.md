@@ -15,7 +15,7 @@ If you purchased a **Climb_and_Dive kit** complete with both boards, then the Xi
 If you sourced your Seeed Studio Xiao nRF52840 from another provider you will have to install CircuitPython first and then the program code and libraries.  Dont' worry, it's easy.
 
 <span class="fs-6">
-[Click Here to download the latest program code package](https://www.circuitflyer.com/){: .btn .btn-blue }
+[Click Here to download the latest program code .zip file](https://www.circuitflyer.com/){: .btn .btn-blue }
 </span>
 
 Unzip the download and have a look inside.  You should find a CircuitPython .uf2 file, code.py and a lib(rary) folder.
@@ -28,7 +28,7 @@ A quick note about USB C cables: If you have trouble getting the disk drive to s
 Plug in your board into your computer with a USB C data cable.  I will look like nothing happened. Don't worry.  Follow this simple procedure to install CircuitPython and get the `CIRCUITPY` drive to appear.
 
 **Step 1** - Enter Bootloader mode<br>
-Before we install CircuitPython to the Seeed Studio XIAO nRF52840, it needs to be in bootloader mode. Enter the bootloader mode by the clicking the tiny Reset Button **twice**:
+Before we install CircuitPython to the Seeed Studio XIAO nRF52840, it needs to be in bootloader mode. Enter the bootloader mode by the clicking the very tiny Reset Button **twice**:
 
 ![](assets/images/XiaoBle.png)
 
