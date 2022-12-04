@@ -8,7 +8,7 @@ nav_order: 1
 {: .text-blue-100}
 {: .text-right}
 
-![](assets/images/Assembled 1.png)
+![](assets/images/Assembled 1.jpg)
 
 ## Overview ##
 
