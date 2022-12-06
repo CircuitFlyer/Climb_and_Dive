@@ -14,13 +14,13 @@ nav_order: 7
 
 **Can I extend the touch sensor pin?**  Yes, in theory.  You will have to experiment to make sure it works reliably, but you can add a wire to the touch sensor pin to extend the ‘sensor’ to another location.
 
-**Why don't I get the  one second throttle blip when I start the timer?**  If your ESC has a procedure for throttle calibration, try that, it may help.  See [ESC Information](Power System Information#ESC Information).
+**Why don't I get the  one second throttle 'blip' when I start the timer?**  If your ESC has a procedure for throttle calibration, try that, it may help.  See [ESC Information](Power System Information#ESC Information).
 
 **Is a Bluetooth wireless connection allowed in competition?**  The Bluetooth radio is turned on *only* while the timer is in the programming mode.  Therefore the Bluetooth connection cannot be construed as to provide any control of the aircraft during flight.  Bluetooth is 2.4GHz spread spectrum technology.  The timer uses low energy Bluetooth transmitted through a very small onboard antenna which limits it's usefull range to about 30 feet, or 10 meters, maximum.
 
 **Is Bluefruit Connect the only app that will work with the timer?**  No, there are plenty of other free Bluetooth apps that support wireless UART communication.  Bluefruit Connect was suggested for its simplicity and ease of use.
 
-**Can I make a housing for the timer to help protect it?**  Of course, but making it completely weatherproof may be a challenge.  If you have access to a 3D printer you can download STL files for a casing and cover [**HERE**][4].
+**Can I make a housing for the timer to help protect it?**  Of course, but making it completely weatherproof may be a challenge.  If you have access to a 3D printer you can download STL files for a casing and cover [here][4].
 
 **What type of solder do you use for the backpack PCB assembly?**  The backpack components are soldered with a RoHS compliant lead-free synthetic no-clean formula solder paste.
 

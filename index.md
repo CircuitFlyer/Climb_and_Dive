@@ -21,7 +21,7 @@ The timer is available as a DIY kit that only requires soldering some header pin
 Programming the microcontroller is as easy as dragging and dropping a few files on your computer.  The program code also includes a few features that can add an additional layer of safety to protect your power system in case something doesn't go as expected.
 
 <span class="fs-6">
-[Click Here to order a **Climb_and_Dive** kit on Tindie](https://www.tindie.com/products/28568/){: .btn .btn-green}
+[Click Here to order a **Climb_and_Dive** kit on **Tindie**](https://www.tindie.com/products/28568/){: .btn .btn-green}
 </span>
 
 ## List of Features ##
@@ -56,6 +56,7 @@ Programming the microcontroller is as easy as dragging and dropping a few files 
 
 - The program code is written in Adafruit CircuitPython.  CircuitPython is an easy to read and easy to learn language well supported by comprehensive [learning guides on the Adafruit website][1].
 
-- Reprogrammable.  Have another project idea in mind?  The Xiao line of development boards have the same footprint and pinouts as the Adafruit QTPy size of boards.  The Climb_and_Dive hardware platform is also a great starting point to use in developing code for your own project.  The Xiao can also be programmed as an Arduino device if you prefer.
+- Reprogrammable.  Have another project idea in mind?  The Xiao line of development boards have the same footprint and pinouts as the Adafruit QTPy size of boards.  The Climb_and_Dive hardware platform is also a great starting point to use in developing code for your own project.  The Xiao can also be programmed as an [Arduino device][2] if you prefer.
 
 [1]: https://learn.adafruit.com/
+[2]: https://wiki.seeedstudio.com/XIAO_BLE/

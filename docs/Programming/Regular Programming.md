@@ -32,7 +32,7 @@ A limited set of programming parameters can also be changed without a Bluetooth 
 *Program RPM (magenta):*
 
 {: .warning }
-You are about to run the motor at its flight RPM, secure the aircraft and stay clear of the prop.  The next thing to always remember: 3 TAPS TO STOP THE MOTOR.
+You are about to run the motor at its flight RPM, secure the aircraft and stay clear of the prop.  The next thing to always remember: **3 TAPS TO STOP THE MOTOR**.
 
 To start the motor, touch and hold the pin.  The LED will flash quickly to warn of the impending start-up.  After a short delay the motor will start and accelerate to the last programmed flight RPM.  Release the pin and the motor will stay running.
 
