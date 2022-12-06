@@ -28,11 +28,11 @@ Programming the microcontroller is as easy as dragging and dropping a few files 
 
 - Dimensions: 27mm x 18mm x 9mm.  Weight: 5g.  Ideal for mounting on the side of a profile fuselage.
 
-- Capacitive touch sensor for user input.  No additional switches or buttons to wire and mount.  Although, if desired, the program code does allow for use with an optional remote pushbutton.
+- Touch sensitive pin for user input.  No additional switches or buttons to wire and mount.  Although, if desired, the program code does allow for use with an optional remote push-button switch.
 
 - Onboard multicolour LED to indicate the status of the timer.
 
-- Wireless programming in the field via a *free* Bluetooth app using a laptop, tablet or smart phone. The start-up delay, flight time and governed RPM settings plus a lot more more can be changed without any extra tools, cards or programming boxes.
+- Wireless programming in the field via a *free* Bluetooth app using a laptop, tablet or smart phone. The start-up delay, flight time and governed RPM settings plus a lot more can be changed without any extra tools, cards or programming boxes.
 
 - Programmable soft start.  The RPM increases over a programmable time period for smoother take-offs.
 
@@ -40,7 +40,7 @@ Programming the microcontroller is as easy as dragging and dropping a few files 
 
 - An onboard accelerometer provides a programmable active boost in power during a climb as well as a decrease in power in a dive.  Accelerometer calibration is not required.
 
-- Constant RPM throughout the flight is maintained by sensing the motor voltage using a PID feedback loop.  No need for a tachometer.  The RPM number you program is the RPM you get at the propeller.
+- Constant RPM throughout the flight is maintained by sensing the motor voltage using a PID control feedback loop.  No need for a tachometer.  The RPM number you program is the RPM you get at the propeller.
 
 - Works with lower cost ESC’s.  The governing function takes place in the timer so expensive governing ESC’s are not required.
 
@@ -54,6 +54,8 @@ Programming the microcontroller is as easy as dragging and dropping a few files 
 
 - Built-in micro USB C port.  Plug it into your computer and it shows up as a small disk drive.   This makes it very easy to keep the software up to date with the latest revisions.
 
-- The program code is written in Adafruit CircuitPython.  CircuitPython is an easy to read and easy to learn language well supported by comprehensive learning guides on the Adafruit website.
+- The program code is written in Adafruit CircuitPython.  CircuitPython is an easy to read and easy to learn language well supported by comprehensive [learning guides on the Adafruit website][1].
 
 - Reprogrammable.  Have another project idea in mind?  The Xiao line of development boards have the same footprint and pinouts as the Adafruit QTPy size of boards.  The Climb_and_Dive hardware platform is also a great starting point to use in developing code for your own project.  The Xiao can also be programmed as an Arduino device if you prefer.
+
+[1]: https://learn.adafruit.com/

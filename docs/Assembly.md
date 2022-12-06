@@ -16,7 +16,7 @@ If you prefer to purchase items separately here are some suggested sources:
 
 | Qty | Description | Online Sources |
 | :---: | ----------- | ------------- |
-| 1 | Seed Studio Xiao nRF52840<br>(The cheaper one, not the 'Sense' version) | [Digikey][9]<br>[Mouser][10]<br>[Seeed Studio][11]  |
+| 1 | Seeed Studio Xiao nRF52840<br>(The cheaper one, not the 'Sense' version) | [Digikey][9]<br>[Mouser][10]<br>[Seeed Studio][11]  |
 | 1 | Climb_and_Dive Backpack w/ 5 pin RA Header Strip| === link to Tindie |
 | 1 | JST Battery Connector (Optional) | [HobbyTown][7]<br>[Amazon][8] |
 
@@ -32,52 +32,59 @@ The boards as supplied include strips of breakaway header pins.  Assemble and so
 
 ![](assets/images/Top and Side Views.png)
 
+---
 **Step 1** - Insert the bent legs of the 5 pin right angle strip through the backpack PCB and hold with a clamp for soldering.
 
 ![](assets/images/5 Pin Clamp.jpg)
 
+___
 **Step 2** - Solder the pins to the back side of the backpack as shown.
 
 ![](assets/images/Solder 5 Pin.jpg)
 
+___
 **Step 3** - Insert the short legs of the 7 pin header strips through the holes on the top of the backpack.  Then stack the Xiao on top of the long pins and clamp together for soldering.  Make sure it is orientated as shown.
 
 ![](assets/images/Xiao Clamp Top.jpg)
 
+___
 **Step 4** - Solder all of the short header pins on the back of the backpack.
 
 ![](assets/images/Solder Xiao Back.jpg)
 
+___
 **Step 5** - Flip it over and solder all of the longer header pins on the Xiao nRF52840.  Don't trim the long pins just yet.
 
 ![](assets/images/Solder Xiao Top.jpg)
 
+___
 **Step 6** - Now you can trim off *only* the long header pins that you don't need.  Do **not** cut the touch pin, leave it sticking out.
 
 {: .highlight }
-Note: If you prefer, the program code does include provisions to use an *optional* push-button switch instead of the touch pin.  If you want to use a push-button switch it will connect to the timer using the 2 pins as shown below.  Depending how you want to connect your switch, you may want to leave those two pins sticking out as well.  The push-button switch functions exactly the same as the touch pin.
+Note: If you prefer, the program code does include provisions to use an *optional* push-button switch instead of the touch pin.  If you want to use a push-button switch it will connect to the timer using the 2 pins as shown below.  Depending how you want to connect your switch, you may want to leave those two pins sticking out as well.  The push-button switch functions exactly the same as the touch pin.  Note: use a normally open (NO) momentary contact type switch.
 
 ![](assets/images/Pin Labels.png)
 ![](assets/images/Trimmed Pins.jpeg)
-
-## Installation ##
-
-The flat bottom of the timer **must** be installed on a vertical part of the aircraft with the ESC/Motor connection pins pointing forward and the component side of the timer facing the pilot.  Although not super-critical, the long side of the timer should be installed so that it is horizontal when the aircraft is flying straight and level.  Calibration of the accelerometer is not required.
-
-A couple of pieces of adhesive backed hook and loop fastener make quick work of mounting the timer in position.
-
-![](assets/images/Ringmaster Installation.jpeg)
 
 ## Connecting it All Together ##
 
 {: .highlight }
 When connecting the ESC servo connector be sure the **ground wire (brown or black)** is attached to the ground pin on the board, labeled **GND**.  
 
+![](assets/images/Connections.jpeg)
 ![](assets/images/Climb_and_Dive Connection Diagram.png)
 
 Connect the backpack motor pins to any two of the three motor wires.  It doesn't matter which two.  For convenience I use a male JST battery style connector (just for reference: the full manufacturers name is a male JST-RYC connector).  Solder the JST connector leads into the back of the bullet connectors of the ESC motor wires.
 
 ![](assets/images/Bullet Connectors.jpeg)
+
+## Installation ##
+
+The flat bottom of the timer **must** be installed on a vertical part of the aircraft with the ESC/Motor connection pins pointing forward and the component side of the timer facing the pilot.  Although not super-critical, the long side of the timer should be installed so that it is horizontal when the aircraft is flying straight and level.  Calibration of the accelerometer is not required.
+
+A couple of pieces of adhesive backed hook and loop fastener (aka Velcro) makes quick work of mounting the timer in position.
+
+![](assets/images/Ringmaster Installation.jpeg)
 
 [1]: https://learn.adafruit.com/adafruit-guide-excellent-soldering
 [2]: https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering?_ga=2.264399628.2047829894.1668554338-987389297.1656854053

@@ -25,10 +25,10 @@ A quick note about USB C cables: If you have trouble getting the disk drive to s
 
 ### Installing CircuitPython on a New Xiao nRF52840: ###
 
-Plug in your board into your computer with a USB C data cable.  I will look like nothing happened. Don't worry.  Follow this simple procedure to install CircuitPython and get the `CIRCUITPY` drive to appear.
+Plug in your board into your computer with a USB C data cable.  It will look like nothing happened. Don't worry.  Follow this simple procedure to install CircuitPython and get the `CIRCUITPY` drive to appear.
 
 **Step 1** - Enter Bootloader mode<br>
-Before we install CircuitPython to the Seeed Studio XIAO nRF52840, it needs to be in bootloader mode. Enter the bootloader mode by the clicking the very tiny Reset Button **twice**:
+Before we install CircuitPython to the Seeed Studio XIAO nRF52840, it needs to be in bootloader mode. Enter the bootloader mode by clicking the very tiny Reset Button **twice**:
 
 ![](assets/images/XiaoBle.png)
 
@@ -44,14 +44,14 @@ Then the `XAIO-SENSE` disk drive will show up:
 
 ![](assets/images/Xiao-circuitpy.png)
 
-Congratulations, you have successfully installed CircuitPython.  That was easy.
+Congratulations, you have successfully installed CircuitPython.
 
 ### Installing the Program Code and Library Files: ###
 **Step 4** - Drag the code.py file and the lib folder that you downloaded and drop it onto the `CIRCUITPY` drive.
 
 ![](assets/images/Code-circuitpy.png)
 
-Congratulations, you should now have a Climb_and_Drive timer.  The LED on the Xiao should now illuminate green to indicate that it's currently in Standby Mode.  That was even easier.
+Congratulations, you should now have a Climb_and_Drive timer.  The LED on the Xiao should now illuminate green to indicate that it's currently in Standby Mode.
 
 ### Updating the Software: ###
 If there are future updates to the program code, repeat **Step 4** to overwrite and replace the old code.py with the newest version.  If there is a major update, perhaps because a newer version of CircuitPython is released, then repeat **Steps 1 through 4** to replace all of the files and libraries.

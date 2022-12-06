@@ -40,7 +40,7 @@ While the motor is running:<br>
 1 tap on the pin will increase the RPM by 50 RPM.<br>
 2 taps will decrease the RPM by 50 RPM.<br>  
 
-Be sure to wait about a second between each set of taps for the RPM to change. Use a tachometer for a more precise setting of the RPM.  Avoid prolong running on the ground as some electrical components may get hot.
+Be sure to wait about a second between each set of taps for the RPM to change. Use a tachometer for a more precise setting of the RPM.  Avoid prolonged running on the ground as some electrical components may get hot.
 
 When the desired RPM is reached:<br>
 **3 TAPS TO STOP THE MOTOR.**<br>

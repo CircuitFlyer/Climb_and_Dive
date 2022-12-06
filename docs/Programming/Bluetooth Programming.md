@@ -13,10 +13,10 @@ nav_order: 1
 
 ### Settings ###
 
-There are several features of the the timer that you can customize based on a user programmable setting.  Bluetooth 'pairing' is not normally required.
+There are several features of the the timer that you can customize based on a user programmable setting.  Bluetooth 'pairing' is not required.
 
 **Start Delay Time**<br>
-The start delay is programmable from 0 to 60 seconds in 1 second intervals.  This is the time delay between the motor blip when the timer sequence begins and when the motor starts up for take-off.  This gives the pilot time to walk to the handle and get ready before the motor starts.
+The start delay is programmable from 0 to 60 seconds in 1 second intervals.  This is the time delay between when the timer flight sequence begins and when the motor starts up for take-off.  This gives the pilot time to walk to the handle and get ready before the motor starts.
 
 **Flight Time**<br>
 The flight time can be set from 1 second to 360 seconds (6 minutes) in 1 second intervals.  This time begins when the motor reaches full flight RPM and lasts until the 3 second period of increased RPM just before the motor stops at the end of the flight.
@@ -78,7 +78,7 @@ The UART module will open but the screen will be blank.
 
 ![](assets/images/Bluefruit 5.5.png)
 
-**Step 8** - enter the new setting you would like to use and press **Send**.  The timer will then list all of the parameters again including the one you just changed.
+**Step 8** - Enter the new setting you would like to use and press **Send**.  The timer will then list all of the parameters again including the one you just changed.
 
 Repeat steps 7 and 8 for any other settings you would like to change.  
 
@@ -86,6 +86,6 @@ Repeat steps 7 and 8 for any other settings you would like to change.
 
 **Step 9** - When you are finished enter *item number 0* to save the settings and disconnect.  The timer LED will change to green (Standby mode).
 
-**Step 10** - On the app main screen it is now safe hit the OK button to disconnect and then close the app.
+**Step 10** - On the app main screen it is now safe hit to the OK button to disconnect and then close the app.
 
 ![](assets/images/Bluefruit 6.png)
