@@ -133,14 +133,16 @@ def dot(color):
     else:
         blue_led.value = True
 
-def flash():  # used to display auto-shutdown fault codes at end of flight
-    red_led.value = False  # turn on
-    sleep(.3)
-    red_led.value = True  # turn off
-    sleep(.5)
+def flash(number_of_flashes):  # used to display auto-shutdown fault codes at end of flight
+    for i in range(number_of_flashes):
+        red_led.value = False  # turn on
+        sleep(.3)
+        red_led.value = True  # turn off
+        sleep(.5)
 
 def save_parameters():  # used to write any changed parameters to non-volatile memory for the next flight
     array = pack('7h', delay_time, flight_time, rpm_setpoint, climb_gain, dive_gain, number_of_poles, motor_acceleration_setting)
+    nvm[0:14] = array
     print("Parameters have been saved")
 
 def program_select():  # used to select the various choices within the manual programming modes
@@ -183,16 +185,6 @@ def active(z_coefficiant, z_slope_coeficiant, climb_threshold, climb_multiplier,
     boost = 0
     brake = 0
 
-    test_flag = False
-    pull_counter = 0
-    global shutdown
-    time1 = 0
-    time2 = 0
-    timeout1 = .5  # reset if 2nd half of pull not recieved
-    timeout2 = .3  # to block another 1st half of pull imediately after 2nd half recieved
-    timeout3 = 1.5   # reset pull_counter if next pull not fast enough
-
-
     # initial value
     active_out = 0
 
@@ -207,22 +199,6 @@ def active(z_coefficiant, z_slope_coeficiant, climb_threshold, climb_multiplier,
         z_slope_filtered = (z_slope_filtered * z_slope_coeficiant)+((1-z_slope_coeficiant) * z_slope)  # filtered again
         old_z_filtered = z_filtered
         last_time = now
-
-        # Auto shutdown detection logic for experimental testing:
-        if (z_slope_filtered < -55) and (y_in > .8) and (y_in < 1.2) and not test_flag and (((now - time2)/1_000_000_000) > timeout2):
-            test_flag = True
-            time1 = now
-        if test_flag and (((now - time1)/1_000_000_000) > timeout1):
-            test_flag = False
-        if test_flag and (z_slope_filtered > 55) and (y_in > .8) and (y_in < 1.2):
-            pull_counter += 1
-            test_flag = False
-            time2 = now
-        if (pull_counter >= 3):
-            shutdown = True
-        if (pull_counter > 0) and (((now - time2)/1_000_000_000) > timeout3):
-            pull_counter = 0
-
         if z_slope_filtered > climb_threshold:  # climb(and dive) treshold can be used to adjust sensitivity
             boost = z_slope_filtered - climb_threshold
         elif z_slope_filtered < (dive_threshold * -1):
@@ -699,11 +675,6 @@ while True:
             mode = "flight_complete"
             print("Now in", mode, "mode")
 
-        if shutdown:
-            mode = "flight_complete"
-            print("Now in", mode, "mode")
-            fault_code = 4
-
         new_rpm_setpoint = rpm_setpoint + active1.send(monotonic_ns())  # add active accelerometer output
         pid_out = PID(base_us, new_rpm_setpoint)
         if pid_out == idle_us:
@@ -742,13 +713,7 @@ while True:
         esc_pwm.duty_cycle = servo_duty_cycle(idle_us)
         neo_update1.send((BLANK, 0))
         while True:
-            sleep(3)  # flash codes for auto-shutdown events, 1 for prop strike, 2 for failed start, 3 for failure to reach governed sRPM etpoint, 4 if operator initiated
-            if fault_code == 1 or fault_code == 2 or fault_code == 3 or fault_code == 4:
-                flash()
-            if fault_code == 2 or fault_code == 3 or fault_code == 4:
-                flash()
-            if fault_code == 3 or fault_code == 4:
-                flash()
-            if fault_code == 4:
-                flash()
+            sleep(3)  # flash codes for auto-shutdown events, 1 for prop strike, 2 for failed start, 3 for failure to reach governed RPM setpoint
+            if fault_code > 0:
+                flash(fault_code)
             pass
