@@ -32,7 +32,7 @@ Before we install CircuitPython to the Seeed Studio XIAO nRF52840, it needs to b
 
 ![](assets/images/XiaoBle.png)
 
-Then the `XAIO-SENSE` disk drive will show up:
+Give it a couple of seconds, then the `XAIO-SENSE` disk drive will show up:
 
 ![](assets/images/Xiao-sense.png)
 
@@ -40,18 +40,18 @@ Then the `XAIO-SENSE` disk drive will show up:
 
 ![](assets/images/Xiao-circuitpython.png)
 
-**Step 3** - The disk drive will automatically exit bootloader mode and the name will change to `CIRCUITPY`.
+**Step 3** - After 15 seconds or so, the disk drive will automatically exit bootloader mode and the name will change to `CIRCUITPY`.
 
 ![](assets/images/Xiao-circuitpy.png)
 
 Congratulations, you have successfully installed CircuitPython.
 
 ### Installing the Program Code and Library Files: ###
-**Step 4** - Drag the code.py file and the lib folder that you downloaded and drop it onto the `CIRCUITPY` drive.
+**Step 4** - Drag the complete lib folder that you downloaded and drop it onto the `CIRCUITPY` drive.  Your computer may ask if you want to replace the folder on the drive. Click **Replace**, don't keep the old one.  Next, drag and drop the code.py file onto the `CIRCUITPY` drive.  Again, **replace** any existing versions.
 
 ![](assets/images/Code-circuitpy.png)
 
-Congratulations, you should now have a Climb_and_Drive timer.  The LED on the Xiao should now illuminate green to indicate that it's currently in Standby Mode.
+Congratulations, you should now have a Climb_and_Drive timer.  The LED on the Xiao should illuminate green to indicate that it's currently in Standby mode.
 
 ### Updating the Software: ###
 If there are future updates to the program code, repeat **Step 4** to overwrite and replace the old code.py with the newest version.  If there is a major update, perhaps because a newer version of CircuitPython is released, then repeat **Steps 1 through 4** to replace all of the files and libraries.
