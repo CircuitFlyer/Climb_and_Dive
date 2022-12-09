@@ -84,6 +84,8 @@ The flat bottom of the timer **must** be installed on a vertical part of the air
 
 A couple of pieces of adhesive backed hook and loop fastener (aka Velcro) makes quick work of mounting the timer in position.
 
+Please keep in mind that the accelerometer is a very sensitive device and excessive vibration can make it difficult to get accurate readings.  If possible locate the timer away from any source of vibration.  It's is always a good idea to balance new propellers before use.
+
 ![](assets/images/Ringmaster Installation.jpeg)
 
 [1]: https://learn.adafruit.com/adafruit-guide-excellent-soldering
