@@ -34,4 +34,4 @@ nav_order: 7
 [1]: https://codewith.mu/en/about
 [2]: https://learn.adafruit.com/welcome-to-circuitpython
 [3]: https://learn.adafruit.com/welcome-to-circuitpython/creating-and-editing-code
-[4]: === link to stl's
+[4]: https://github.com/CircuitFlyer/Climb_and_Dive/tree/main/Design%20Files/Casing
