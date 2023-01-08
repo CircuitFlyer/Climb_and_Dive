@@ -86,6 +86,6 @@ Repeat steps 7 and 8 for any other settings you would like to change.
 
 **Step 9** - When you are finished enter *item number 0* to save the settings and disconnect.  The timer LED will change to green (Standby mode).
 
-**Step 10** - On the app main screen it is now safe hit to the OK button to disconnect and then close the app.
+**Step 10** - On the app main screen it is now safe to hit the OK button to disconnect and then close the app.
 
 ![](assets/images/Bluefruit 6.png)
