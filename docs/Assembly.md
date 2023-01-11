@@ -17,7 +17,7 @@ If you prefer to purchase items separately here are some suggested sources:
 | Qty | Description | Online Sources |
 | :---: | ----------- | ------------- |
 | 1 | Seeed Studio Xiao nRF52840<br>(The cheaper one, not the 'Sense' version) | [Digikey][9]<br>[Mouser][10]<br>[Seeed Studio][11]  |
-| 1 | Climb_and_Dive Backpack w/ 5 pin RA Header Strip| === link to Tindie |
+| 1 | Climb_and_Dive Backpack w/ 5 pin RA Header Strip| [Tindie][3] |
 | 1 | JST Battery Connector (Optional) | [HobbyTown][7]<br>[Amazon][8] |
 
 ## Tools Required ##
@@ -90,6 +90,7 @@ Please keep in mind that the accelerometer is a very sensitive device and excess
 
 [1]: https://learn.adafruit.com/adafruit-guide-excellent-soldering
 [2]: https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering?_ga=2.264399628.2047829894.1668554338-987389297.1656854053
+[3]: https://www.tindie.com/products/28568/
 [7]: https://www.hobbytown.com/protek-rc-jst-male-connector-leads-2-ptk-5218/p23432
 [8]: https://www.amazon.com/Silicone-Connector-SIM-NAT-Connectors/dp/B071XN7C43/ref=sr_1_16?crid=231ACQ422NRUB&keywords=jst+ryc&qid=1668614414&sprefix=jst+ryc%2Caps%2C89&sr=8-16
 [9]: https://www.digikey.com/en/products/detail/seeed-technology-co-ltd/102010448/16652893?s=N4IgTCBcDaIIwFYCcB2AtHADGTWAseAHGgHIAiIAugL5A
