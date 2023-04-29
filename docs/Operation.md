@@ -30,11 +30,11 @@ When ready, touch and hold the pin (a long touch of a minimum of 3 seconds), the
 {: .highlight }
 Note: Any touch of the pin during the Start Delay mode will stop the countdown and return to the Standby mode (green).
 
-After the Start Delay the Flight mode will start (flashing red) and the motor RPM will slowly increase to the desired flight RPM at the programmed rate.  This will assist with a smooth take-off.
+After the Start Delay the Flight mode will start (flashing red) and the motor RPM will slowly increase to the desired flight RPM at the programmed rate.  This will assist with a smooth take-off.  In oder to allow for a smooth climb to cruising speed there is a 5 second delay before the active function of the timer becomes fully operational.
 
 {: .highlight }
 If you need to abort the flight: After the motor starts, **any touch of the pin will stop the motor** and jump to the Flight Complete mode (LED off).
 
-10 seconds before the Flight mode is complete the LED will quickly flash white to indicate the end of the flight.  The motor RPM will then increase for 3 seconds before stopping to aid in a smooth approach and landing.  Once the motor stops the program enters the Flight Complete mode (LED off).  The power must be reset in order to exit the Flight Complete mode.
+10 seconds before the Flight mode is complete the LED will quickly flash white to indicate the end of the flight.  The motor RPM will then increase for 3 seconds before stopping to aid in a smooth approach and landing.  There is also and option to add up to 10 seconds of normal flight RPM *after* the 3 second burst of high RPM to allow extra time to prepare for the landing.  Once the motor stops the program enters the Flight Complete mode (LED off).  The power must be reset in order to exit the Flight Complete mode.
 
 Disconnect the battery, replace it with a fully charged one and repeat the process for the next flight.

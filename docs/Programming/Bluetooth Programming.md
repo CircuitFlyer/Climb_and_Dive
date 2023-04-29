@@ -36,17 +36,25 @@ The motor acceleration is an arbitrary multiplier with a value from 1 through 10
 **Number of Motor Poles**<br>
 Enter the number of magnetic poles used in your motor.  The timer needs this information in order to accurately calculate the RPM.  The number of magnetic poles  can be found in you motor documentation or by counting the number of magnet segments glued around the inside of the rotating part of the motor.
 
+**Last Lap Time**<br>
+Enter the amount of time from 0 to 10 seconds that you would like the motor to run at normal speed *after* the short burst of high RPM at the end of the flight.  If you prefer to use the short burst of high RPM to set-up for a better landing glide, set this time to 0.  If you prefer the use the short burst of high RPM as a warning signal to indicate the end of the flight, enter a length of time that allows you prepare for landing.
+
+**Mounting Position**<br>
+This programming option is only required if you want to install the timer in an orientation other than the default position shown in the assembly instructions.  For further information and details of the programming procedure, please refer to the page titled [Timer Mounting Position](Timer Mounting Position).
+
 The table below summarizes the programmable settings available and their default values:
 
 | Programmable Setting | Allowable Range | Default Setting |
 | --- | :---: | :---: |
 | Start Delay Time | 0 to 60 | 10 Seconds |
 | Flight Time | 1 to 360 | 180 Seconds |
-| Motor RPM | 5000 to 15000 | 10000 |
+| Motor RPM | 4000 to 15000 | 10000 |
 | Climb Gain | 0 to 10 | 5 |
 | Dive Gain | 0 to 10 | 5 |
 | Motor Acceleration | 1 to 10 | 5 |
 | Number of Motor Poles | 2 to 24 | 14 |
+| Last Lap Time | 0 to 10 | 0 |
+| Mounting Position| - | +Z, -X |
 
 <br>
 

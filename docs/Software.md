@@ -14,8 +14,11 @@ If you purchased a **Climb_and_Dive kit** complete with both boards, then the Xi
 
 If you sourced your Seeed Studio Xiao nRF52840 from another provider you will have to install CircuitPython first and then the program code and libraries.  Dont' worry, it's easy.
 
+{: .highlight}
+Be sure to check here from time to time to make sure you are using the most up to date version of the program code.  **Latest Version: v1.1**
+
 <span class="fs-6">
-[Click Here to download the latest program code .zip file](https://github.com/CircuitFlyer/Climb_and_Dive/archive/v1.0.0.zip){: .btn .btn-blue }
+[Click Here to download the latest program code .zip file](https://github.com/CircuitFlyer/Climb_and_Dive/archive/v1.1.0.zip){: .btn .btn-blue }
 </span>
 
 Unzip the download and have a look inside.  You should find a CircuitPython .uf2 file, code.py and a lib(rary) folder.

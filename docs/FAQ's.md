@@ -16,6 +16,8 @@ nav_order: 7
 
 **Why don't I get the  one second throttle 'blip' when I start the timer?**  If your ESC has a procedure for throttle calibration, try that, it may help.  See [ESC Information](Power System Information#ESC Information).
 
+**The motor takes to long to get to cruising speed after take-off**  Do not hold the running airplane for an extended period before releasing for take-off.  There is a 5 second delay after the motor reaches the programmed flight RPM until the active function of the timer becomes fully operational.  This is to prevent the active function from impeding the airplane climb-out and acceleration to cruising speed.
+
 **Is a Bluetooth wireless connection allowed in competition?**  The Bluetooth radio is turned on *only* while the timer is in the programming mode.  Therefore the Bluetooth connection cannot be construed as to provide any control of the aircraft during flight.  Bluetooth is 2.4GHz spread spectrum technology.  The timer uses low energy Bluetooth transmitted through a very small onboard antenna which limits it's usefull range to about 30 feet, or 10 meters, maximum.
 
 **Is Bluefruit Connect the only app that will work with the timer?**  No, there are plenty of other free Bluetooth apps that support wireless UART communication.  Bluefruit Connect was suggested for its simplicity and ease of use.

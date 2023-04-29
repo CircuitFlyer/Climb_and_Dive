@@ -78,11 +78,17 @@ Connect the backpack motor pins to any two of the three motor wires.  It doesn't
 
 ![](assets/images/Bullet Connectors.jpeg)
 
+{: .highlight }
+Note: The main reason a JST connector is suggested is only because it's a very common 2-pin connector available from just about any hobby shop.  It may not be the ideal connector if connected and disconnected frequently.  A more robust connector would be a 2-pin "Dupont" connector.  Unfortunately, these are a little harder to find but are available from online retailers.
+
 ## Installation ##
 
 The flat bottom of the timer **must** be installed on a vertical part of the aircraft with the ESC/Motor connection pins pointing forward and the component side of the timer facing the pilot.  Although not super-critical, the long side of the timer should be installed so that it is horizontal when the aircraft is flying straight and level.  Calibration of the accelerometer is not required.
 
-A couple of pieces of adhesive backed hook and loop fastener (aka Velcro) makes quick work of mounting the timer in position.
+{: .highlight }
+The description above is the **default** mounting orientation.  If you would like to install the timer in your airplane in a different orientation please refer to the page titled [Timer Mounting Position](Programming/Timer Mounting Position).
+
+A couple of pieces of adhesive backed hook and loop fastener (aka Velcro) makes quick work of holding the timer in position.
 
 Please keep in mind that the accelerometer is a very sensitive device and excessive vibration can make it difficult to get accurate readings.  If possible locate the timer away from any source of vibration.  It's a good idea to always balance new propellers before use.
 

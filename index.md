@@ -36,13 +36,15 @@ Programming the microcontroller is as easy as dragging and dropping a few files 
 
 - Programmable soft start.  The RPM increases over a programmable time period for smoother take-offs.
 
-- A 3 second boost in RPM at the conclusion of a flight to improve the landing glide.
+- A 3 second boost in RPM at the conclusion of a flight to improve the landing glide or as a warning to indicate the impending end of the flight.
 
 - An onboard accelerometer provides a programmable active boost in power during a climb as well as a decrease in power in a dive.  Accelerometer calibration is not required.
 
 - Constant RPM throughout the flight is maintained by sensing the motor voltage using a PID control feedback loop.  No need for a tachometer.  The RPM number you program is the RPM you get at the propeller.
 
 - Works with lower cost ESC’s.  The governing function takes place in the timer so expensive governing ESC’s are not required.
+
+- Following a simple programming procedure the timer can be mounted in any orientation in the airplane.
 
 - Power to the motor is cut off quickly and automatically if the propeller inadvertently strikes the ground.  No more burned out motors or ESC’s from a crash or nose-over on takeoff.
 
