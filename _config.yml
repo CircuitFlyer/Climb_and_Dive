@@ -16,3 +16,5 @@ callouts:
   warning:
     title: Warning
     color: red
+
+heading_anchors: true
