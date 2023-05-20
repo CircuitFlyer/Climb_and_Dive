@@ -7,7 +7,7 @@
 #  microcontroller development board to create a timed PWM servo signal with accelerometer input, PID RPM control
 #  and Bluetooth LE programming suitable to conduct a typical flight of an electric powered control line model aircraft.
 
-# Timer Program Version: 1.1, April 2023
+# Timer Program Version: 1.2, May 2023
 # Microcontroller Board: Seeed Studio Xiao BLE, https://wiki.seeedstudio.com/XIAO_BLE/
 # Firmware: CircuitPython 7.3.3, https://circuitpython.org/board/Seeed_XIAO_nRF52840_Sense/
 # Backpack Hardware Version: 3.2
@@ -84,7 +84,7 @@ z_axis = AnalogIn(A2)
 
 # Setup bluetooth UART
 ble = BLERadio()
-ble.name = "Climb & Dive v1.1"  # name to display on Bluetooth app, max v1.1 26 (was 18) characters
+ble.name = "Climb & Dive v1.2"  # name to display on Bluetooth app, max v1.1 26 (was 18) characters
 uart_server = UARTService()
 advertisement = ProvideServicesAdvertisement(uart_server)
 ble.stop_advertising()
@@ -201,7 +201,7 @@ def active():  # construct a generator using the global parameters.
     while True:
         now = yield active_out  # first time through (.send(None)) generator stops here and waits for next "now"
         period = (now - last_time)/1_000_000_000  # uses time monotonic_us for better accuracy
-        if period > .018:  # slows down the sample period, can improve noise rejection
+        if period > .016:  # slows down the sample period, can improve noise rejection
             wing_in = g_force(axes[abs(wing_axis)-1]) * (math.copysign(1, wing_axis)) * -1  # invert for correct slope calculation
             wing_in *= 2  # multiplier to increase sensitivity
             #print((wing_in,))  # for testing use - plot raw wing axis data
@@ -464,11 +464,11 @@ last_time = 0
 delay_time = 10  # default delay time (seconds)
 flight_time = 180  # default flight time (seconds)
 rpm_setpoint = 10000  # default rpm setting
-wing_coefficient = .88  # active input filter
-wing_slope_coefficient = .91  # active output filter
+wing_coefficient = .86  # active input filter
+wing_slope_coefficient = .89  # active output filter
 climb_threshold = 20
 dive_threshold = 20
-active_ouput_multiplier = 3
+active_ouput_multiplier = 2.2
 climb_gain = 5  # default gain
 dive_gain = 5  # default gain
 idle_us = 950
