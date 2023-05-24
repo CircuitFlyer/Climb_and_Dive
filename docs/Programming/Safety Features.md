@@ -17,7 +17,7 @@ The timer is programmed to automatically shutdown the motor and jump to the Flig
 SAFETY FIRST!  While the timer code does include some safety features to help protect the power system, these features do not cover *all* potential problems.  Always use extra caution whenever the battery is connected and something unexpected occurs.
 
 **1 Red Flash**<br>
-The motor RPM unexpectedly drops too low.  This can happen if the prop comes in contact with something, i.e. a crash or nose-over, or if the battery voltage drops very low.
+The motor RPM unexpectedly drops too low.  This can happen if the prop comes in contact with something, i.e. a crash or nose-over, or if the battery voltage drops very low.  This can also occur if there is a poor, or intermittent, electrical connection with the voltage sensing wires to the timer.
 
 **2 Red Flashes**<br>
 The motor fails to start properly.  This can happen if there is a poor electrical connection to the ESC or with the voltage sensing wires to the timer.  This could also happen due to a mechanical issue preventing the motor from rotating.
