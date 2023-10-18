@@ -42,6 +42,9 @@ Enter the amount of time from 0 to 10 seconds that you would like the motor to r
 **Mounting Position**<br>
 This programming option is only required if you want to install the timer in an orientation other than the default position shown in the assembly instructions.  For further information and details of the programming procedure, please refer to the page titled [Timer Mounting Position](Timer Mounting Position).
 
+**Overhead Boost**<br>
+The overhead boost setting is an arbitrary multiplier with a value from 0 through 10 (integer values only).  This number is used to adjust the amount of extra motor RPM that is added when flying high overhead.  0 turns the feature off and a setting of 10 would give the maximum boost in RPM when flying overhead.  Most pilots will likely use a setting between 4 and 6.
+
 The table below summarizes the programmable settings available and their default values:
 
 | Programmable Setting | Allowable Range | Default Setting |
@@ -55,6 +58,7 @@ The table below summarizes the programmable settings available and their default
 | Number of Motor Poles | 2 to 24 | 14 |
 | Last Lap Time | 0 to 10 | 0 |
 | Mounting Position| - | +Z, -X |
+| Overhead Boost | 0 to 10 | 5 |
 
 <br>
 
@@ -92,7 +96,7 @@ Repeat steps 7 and 8 for any other settings you would like to change.
 
 ![](assets/images/Bluefruit 5.png)
 
-**Step 9** - When you are finished enter *item number 0* to save the settings and disconnect.  The timer LED will change to green (Standby mode).
+**Step 9** - When you are finished enter ***item number 0*** to save the settings and disconnect.  The timer LED will change to green (Standby mode).
 
 **Step 10** - Tap on the **Modules** button in the top left of the screen to return to the Modules page.  Then tap on the **Disconnect** button in the top left again to return to the opening screen.  On the app main screen it is now safe to hit the **OK** button to disconnect and then close the app.
 
