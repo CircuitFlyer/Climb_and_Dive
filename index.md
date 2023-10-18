@@ -40,6 +40,8 @@ Programming the microcontroller is as easy as dragging and dropping a few files 
 
 - An onboard accelerometer provides a programmable active boost in power during a climb as well as a decrease in power in a dive.  Accelerometer calibration is not required.
 
+- The ability to improve overhead line tension by increasing the motor RPM only when flying high overhead.
+
 - Constant RPM throughout the flight is maintained by sensing the motor voltage using a PID control feedback loop.  No need for a tachometer.  The RPM number you program is the RPM you get at the propeller.
 
 - Works with lower cost ESC’s.  The governing function takes place in the timer so expensive governing ESC’s are not required.
