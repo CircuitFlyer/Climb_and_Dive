@@ -7,7 +7,7 @@
 #  microcontroller development board to create a timed PWM servo signal with accelerometer input, PID RPM control
 #  and Bluetooth LE programming suitable to conduct a typical flight of an electric powered control line model aircraft.
 
-# Timer Program Version: 1.2, May 2023
+# Timer Program Version: 1.3, Oct 2023
 # Microcontroller Board: Seeed Studio Xiao BLE, https://wiki.seeedstudio.com/XIAO_BLE/
 # Firmware: CircuitPython 7.3.3, https://circuitpython.org/board/Seeed_XIAO_nRF52840_Sense/
 # Backpack Hardware Version: 3.2
@@ -40,11 +40,11 @@ SOFTWARE.
 
 from board import LED_RED, LED_BLUE, LED_GREEN, D6, D7, D9, D10, A0, A1, A2, A3
 from time import monotonic, sleep, monotonic_ns
-import touchio
+from touchio import TouchIn
 from pwmio import PWMOut
 import digitalio
 from analogio import AnalogIn
-import math
+from math import copysign, degrees, atan, isnan
 from microcontroller import nvm
 from pulseio import PulseIn
 from struct import pack, unpack
@@ -52,6 +52,7 @@ from adafruit_ble import BLERadio
 from adafruit_ble.advertising.standard import ProvideServicesAdvertisement
 from adafruit_ble.services.nordic import UARTService
 from adafruit_debouncer import Debouncer
+from ulab import numpy as np
 
 
 # Set some things up to get started:
@@ -66,7 +67,7 @@ blue_led = digitalio.DigitalInOut(LED_BLUE)
 blue_led.direction = digitalio.Direction.OUTPUT
 
 # Capacitive touch sensor input on pin RX/D7
-touch_debounced = touchio.TouchIn(D7)
+touch_debounced = TouchIn(D7)
 touch = Debouncer(touch_debounced, interval=0.02)  # add a debouncer to the touchio pin, default stabilization interval is .01 seconds
 
 # Optional pushbutton input on pin MI/D9
@@ -84,14 +85,13 @@ z_axis = AnalogIn(A2)
 
 # Setup bluetooth UART
 ble = BLERadio()
-ble.name = "Climb & Dive v1.2"  # name to display on Bluetooth app, max v1.1 26 (was 18) characters
+ble.name = "Climb & Dive v1.3"  # name to display on Bluetooth app, max 26 (was 18) characters
 uart_server = UARTService()
 advertisement = ProvideServicesAdvertisement(uart_server)
 ble.stop_advertising()
 
 
 # Create some helper functions:
-
 
 def neo_update():  # generator used to control the color and flash rate of the built in LED.  Sorry, the neo name is not accurate for all boards.  It's a carry over from Adafruits boards.
 
@@ -144,7 +144,25 @@ def flash(number_of_flashes):  # used to display auto-shutdown fault codes at en
 def save_parameters():  # used to write any changed parameters to non-volatile memory for the next flight
     array = pack('10h', delay_time, flight_time, rpm_setpoint, climb_gain, dive_gain, number_of_poles, motor_acceleration_setting, last_lap_duration, wing_axis, fuse_axis)
     nvm[0:20] = array
+    array = pack('1h', overhead_boost_setting)
+    nvm[30:32] = array
     print("Parameters have been saved")
+
+def read_memory():  # used to read all of the parameter values previously saved to memory
+    global delay_time, flight_time, rpm_setpoint, climb_gain, dive_gain, number_of_poles, motor_acceleration_setting, last_lap_duration, wing_axis, fuse_axis, overhead_boost_setting
+    memory_read = nvm[0:40]
+    data = unpack('20h', memory_read)
+    delay_time = data[0]
+    flight_time = data[1]
+    rpm_setpoint = data[2]
+    climb_gain = data[3]
+    dive_gain = data[4]
+    number_of_poles = data[5]
+    motor_acceleration_setting = data[6]
+    last_lap_duration = data[7]
+    wing_axis = data[8]
+    fuse_axis = data[9]
+    overhead_boost_setting = data[15]
 
 def program_select():  # used to select the various choices within the manual programming modes
     global mode
@@ -185,43 +203,92 @@ def axis_orientation():
     for x in range(1,4):
         accel_out = g_force(axes[x-1])  # read g-force on each axis
         if abs(accel_out) > .8:  # choose the vertical axis
-            signed_axis = int(math.copysign(x, accel_out))  # derive a signed integer variable used to identify axis chosen (easier than using an ascii character)
+            signed_axis = int(copysign(x, accel_out))  # derive a signed integer variable used to identify axis chosen (easier than using an ascii character)
             return signed_axis
 
-def active():  # construct a generator using the global parameters.
+def active():  # Construct a generator to determine the accelerometer based active output.
 
-    # initialize stored data
-    old_wing_filtered = 0  # these are local vaiables
-    wing_slope_filtered = 0
+    # Initialize some locally used data
     last_time = 0
+    m = 0
+    data1 = np.zeros(len(taps1) + 1)  # wing output digital filter buffer
+    wing_buffer = []  # wing offset calibration buffer
+    fuse_buffer = []  # fuse offset calibration buffer
+    boost = 0
+    brake = 0
+    level_gforce = 0
+    old_wing_accelerometer = 0
+    wing_coefficient = .85  # IIR filter for smoothing of the wing input accelerometer
+    old_fuse_accelerometer = 0
+    fuse_coefficient = .85  # IIR filter for smoothing of the fuse input accelerometer
+    fuse_accelerometer_corrected = 0
+    fuse_zero_correction_factor = 0
+    noseup = False
+    fuse_min = .1
+    wing_min = .1
+    noseup_overhead = 1.3
+    noseup_max = .5
 
-    # initial value
+    # Initial value
     active_out = 0
 
     while True:
         now = yield active_out  # first time through (.send(None)) generator stops here and waits for next "now"
-        period = (now - last_time)/1_000_000_000  # uses time monotonic_us for better accuracy
-        if period > .016:  # slows down the sample period, can improve noise rejection
-            wing_in = g_force(axes[abs(wing_axis)-1]) * (math.copysign(1, wing_axis)) * -1  # invert for correct slope calculation
-            wing_in *= 2  # multiplier to increase sensitivity
-            #print((wing_in,))  # for testing use - plot raw wing axis data
-            #fuse_in = g_force(axes[abs(fuse_axis)-1]) * (math.copysign(1, fuse_axis)) * -1  # invert for correct positive value calculation
-            #print((fuse_in,))  # for testing use - plot raw fuse axis data
-            wing_filtered = round((old_wing_filtered * wing_coefficient)+((1-wing_coefficient)*wing_in), 5)  # input filtered and rounded
-            rate_of_change = (wing_filtered-old_wing_filtered)/period
-            wing_slope = math.degrees(math.atan(rate_of_change))
-            wing_slope_filtered = (wing_slope_filtered * wing_slope_coefficient)+((1-wing_slope_coefficient) * wing_slope)  # output filtered again
-            old_wing_filtered = wing_filtered
-            last_time = now
-            if wing_slope_filtered > climb_threshold:  # climb(and dive) treshold can be used to adjust sensitivity
-                boost = wing_slope_filtered - climb_threshold
-            elif wing_slope_filtered < (dive_threshold * -1):
-                brake = wing_slope_filtered + dive_threshold
+        # Measure accelerometer values and calculate output:
+        wing_accelerometer = g_force(axes[abs(wing_axis)-1]) * (copysign(1, wing_axis)) * -1  # invert for correct slope calculation
+        wing_accelerometer_average = round((old_wing_accelerometer * wing_coefficient)+((1-wing_coefficient)*wing_accelerometer), 5)  # input IIR filtered and rounded
+        old_wing_accelerometer = wing_accelerometer_average
+        fuse_accelerometer = g_force(axes[abs(fuse_axis)-1]) * (copysign(1, fuse_axis)) * -1  # invert for correct positive value calculation
+        fuse_accelerometer_average = round((old_fuse_accelerometer * fuse_coefficient)+((1-fuse_coefficient)*fuse_accelerometer), 5)  # input IIR filtered and rounded
+        old_fuse_accelerometer = fuse_accelerometer_average
+        if m % 2 == 0:  # reduce the sample frequency to allow a decrease in the filter cutoff frequency
+            data1 = np.roll(data1,1)
+            data1[-1] = wing_accelerometer_average
+            first_derivative = np.diff(data1, n=1)  # determine the derivative of the wing input data
+            wing_filtered_output = (np.sum(first_derivative * taps1)) * -1  # Apply FIR filter and invert for correct action
+            calculated_slope = degrees(atan(wing_filtered_output/.006667))  # use average period to match sampling rate of filter
+            slope = min(40, max(-40,calculated_slope))  # clip off the maximum/minimum slope, peak values not required
+            if slope > climb_threshold:  # climb (and dive) treshold can be used to adjust sensitivity
+                boost = slope - (climb_threshold / 2)  # only subtract 1/2 the threshold to augment the output slightly
+            elif slope < (dive_threshold * -1):
+                brake = slope + (dive_threshold / 2)
             else:
                 boost = 0
                 brake = 0
-            active_out = ((boost * climb_gain) + (brake * dive_gain)) * active_ouput_multiplier  # application of gain
-            #print((active_out,))  # for testing use - plot RPM change
+        # Measure and calculate level flight offsets:
+        if data_collection and (m % 20 == 0):  # collect a sample of g-force readings for a short period after take-off
+            wing_buffer.append(wing_accelerometer_average)  # stream the sampled data into a buffer
+            wing_buffer_data = np.array(wing_buffer)  # convert the buffer to an array
+            level_gforce = np.mean(wing_buffer_data)  # determine the average reading for level laps
+            fuse_buffer.append(fuse_accelerometer)  # stream the sampled data into a buffer
+            fuse_buffer_data = np.array(fuse_buffer)  # convert the buffer to an array
+            fuse_zero_correction_factor = np.mean(fuse_buffer_data)  # determine the average reading for level laps
+        wing_accelerometer_corrected = wing_accelerometer_average - level_gforce  # offset the wing input data
+        fuse_accelerometer_corrected = fuse_accelerometer_average - fuse_zero_correction_factor  # offset the fuse input data
+        # Calculate overhead boost:
+        if (wing_accelerometer_average - level_gforce) > overhead_threshold:
+            overhead = (wing_accelerometer_average - level_gforce) - overhead_threshold  # determine when flying overhead
+        else:
+            overhead = 0
+        overhead_boost = (overhead * overhead_boost_setting) * 40  # calculate the amount of additional overhead RPM desired
+        # Determine and calculate for a noseup condition, can help reduce any delay in square corners:
+        if fuse_accelerometer_corrected > fuse_min and wing_accelerometer_corrected > wing_min and (wing_accelerometer_corrected - noseup_overhead) < 0 and slope >= 0:
+            noseup = True
+            noseup_boost = min(noseup_max, max(0,(fuse_accelerometer_corrected - fuse_min))) * (70 * climb_gain)  # limit the maximum amount and make it proportional to climb gain
+        else:
+            noseup = False
+            noseup_boost = 0
+        # Calculate  active output:
+        initial_active_out = (int((boost * (climb_gain)) + (brake * dive_gain)) * active_ouput_multiplier) + overhead_boost  # calculate initial output
+        if noseup and noseup_boost > initial_active_out:
+            active_out = noseup_boost  # use noseup output
+        else:
+            active_out = initial_active_out  # use active output
+        # For testing purposes only:
+        if m % 5 == 0:  # approx 50/sec
+            #print((active_out, ))  # for testing use - enter any variables of your choice to plot the output in real time
+            pass
+        m += 1
 
 
 def getRPM():
@@ -236,7 +303,7 @@ def getRPM():
                     pass
                 else:
                     total += pulses[i]  # only valid pulses are totaled up
-                    valid_samples += 1  # only the number of valid samples to be used in RPM calculation to give true RPM numbers.
+                    valid_samples += 1  # only the number of valid samples to be used in RPM calculation to give true RPM numbers
             try:
                 RPM = (int(((1_000_000/total)*60)/(number_of_poles/valid_samples)/10))*10  # need to divide by number of motor poles here.  Sets minimum resolution at 10RPM
             except ZeroDivisionError:
@@ -258,7 +325,7 @@ def PID(base, current_setpoint):
     global error_sum, last_input
     RPMinput = getRPM()
     if RPMinput is not None:
-        #print((RPMinput - current_setpoint,))  # for testing use - plot measured RPM
+        #print((RPMinput - current_setpoint,))  # for testing use - plot RPM variables
         if RPMinput < (.75 * current_setpoint):  # prop strike protection - if  there is a loss of voltage signal, 0 RPM, or if motor stalls or falls to less than a % of setpoint - shut it down.  75% of setpoint RPM works OK, can adjust here is needed
             pid_us = idle_us
             #print(RPMinput)  # for testing use - show the last RPM when prop strike protection kicked in
@@ -308,7 +375,7 @@ def spool_up():
 
 def check_ble():
     global mode
-    if not ble.connected and not ble.advertising:  # advertise when not connected.
+    if not ble.connected and not ble.advertising:  # advertise when not connected
         print("Advertising...")
         ble.start_advertising(advertisement)
     if ble.connected and not mode == "ble_programming":
@@ -333,8 +400,9 @@ def update_strings():
     text5 = " 5) Dive Gain ........... {} \n".format(dive_gain)
     text6 = " 6) Number of Motor Poles {} \n".format(number_of_poles)
     text7 = " 7) Motor Acceleration .. {} \n".format(motor_acceleration_setting)
-    text8 = " 8) Last Lap Time........ {} \n".format(last_lap_duration)
+    text8 = " 8) Last Lap Time ....... {} \n".format(last_lap_duration)
     text9 = " 9) Mounting Position ... {}, {}\n".format(axis_display_name[wing_axis], axis_display_name[fuse_axis])  # v1.1 added orientation detection
+    text10 = "10) Overhead Boost ...... {} \n".format(overhead_boost_setting)  # v1.3 added overhead boost
     text14 = " 0) Save and EXIT\n"
     text151 = "\nStep 1: Record wing to timer mounting orientation.  Point outboard wing down.\n"
     text152 = "\nEnter W when ready "
@@ -345,7 +413,7 @@ def update_strings():
     text16 = " \nEnter item #:\n"
     text18 = " \nEnter new setting:\n"
     text20 = " \nParameters saved, OK to disconnect\n"
-    temp_file = [text0, text1, text2, text3, text4, text5, text6, text7, text8, text9, text14, text151, text152, text153, text154, text155, text156, text16, text18, text20]  # make a list of all of the strings
+    temp_file = [text0, text1, text2, text3, text4, text5, text6, text7, text8, text9, text10, text14, text151, text152, text153, text154, text155, text156, text16, text18, text20]  # make a list of all of the strings
 
 def input_ble_settings(choice):
     global delay_time
@@ -362,6 +430,8 @@ def input_ble_settings(choice):
     global orientation_step_2
     global wing_axis
     global fuse_axis
+    global overhead_boost_setting
+
     waiting_for_input = True  # flag to hold in new parameter input loop
     while waiting_for_input:
         if uart_server.in_waiting:  # incoming (RX) check for incoming text
@@ -394,25 +464,28 @@ def input_ble_settings(choice):
                 if choice == 8:
                     new_setting = min(10, max(0, new_setting))  # constrain output, last lap duration setting 0 to 10
                     last_lap_duration = new_setting
+                if choice == 10:
+                    new_setting = min(10, max(0, new_setting))  # constrain output, overhead boost setting 0 to 10
+                    overhead_boost_setting = new_setting
                 if choice == 9:
                     if orientation_step_1:
-                        send_text(12,12)
+                        send_text(13,13)
                         send_text(-4,-4)
                     if orientation_step_2:
-                        send_text(14,14)
+                        send_text(15,15)
                         send_text(-4,-4)
                 if not orientation_step_1 and not orientation_step_2:
                     update_strings()  # make sure text files contain new parameter
                     text_file = temp_file
                     send_text(-5,-5)  # line space
-                    send_text(1,10)  # display new parameters
+                    send_text(1,11)  # display new parameters
                     waiting_for_input = False  # exit loop, go back to parameter selection
             except ValueError:
                 if choice == 9 and setting != "":
                     if orientation_step_1 and setting in "Ww":
                         temp_wing_axis = axis_orientation()
                         orientation_step_1 = False
-                        send_text(13,14)
+                        send_text(14,15)
                         send_text(-4,-4)
                         orientation_step_2 = True
                     if orientation_step_2 and setting in "Ff":
@@ -422,24 +495,122 @@ def input_ble_settings(choice):
                         update_strings()  # make sure text files contain new parameter
                         text_file = temp_file
                         send_text(-5,-5)  # line space
-                        send_text(1,10)  # display new parameters
+                        send_text(1,11)  # display new parameters
                         waiting_for_input = False  # exit loop, go back to parameter selection
                     elif (orientation_step_1 or orientation_step_2) and setting in "Xx":
                         orientation_step_1 = False
                         orientation_step_2 = False
                         send_text(-5,-5)  # line space
-                        send_text(1,10)  # display new parameters
+                        send_text(1,11)  # display new parameters
                         waiting_for_input = False  # exit loop, go back to parameter selection
                 if choice == 9 and (orientation_step_1 or orientation_step_2) and setting not in "WwFfXx":
-                    print("valueError")  # non-integer was entered by mistake
+                    print("valueError")  # incorrect setting was entered by mistake
                     if orientation_step_1:
-                        send_text(12,12)
+                        send_text(13,13)
                         send_text(-4,-4)
                     if orientation_step_2:
-                        send_text(14,14)
+                        send_text(15,15)
                         send_text(-4,-4)
                 elif choice != 9:
                     send_text(-2,-2)  # re-enter value
+
+
+# Define digital filter:
+
+# Filters computed at https://fiiir.com
+
+# Filter Type: Low Pass, Windowed Sinc FIR
+# Window type: Kaiser
+# Sampling rate: 150Hz
+# Cutoff freqency: 1.5Hz
+# Transition bandwidth: 1.7Hz
+# Stopband attenuation: 21dB
+# Weighting Function: N/A
+# Number of coefficients: 81
+
+taps1 = np.array([
+    0.004107233826136629,
+    0.004568299107366780,
+    0.005035127545733832,
+    0.005506781542188349,
+    0.005982302099982009,
+    0.006460711293076683,
+    0.006941014801796215,
+    0.007422204508355161,
+    0.007903261144690013,
+    0.008383156984833282,
+    0.008860858573909787,
+    0.009335329485698457,
+    0.009805533100592132,
+    0.010270435395702739,
+    0.010729007738800197,
+    0.011180229677740685,
+    0.011623091717033547,
+    0.012056598073216263,
+    0.012479769400753626,
+    0.012891645480250251,
+    0.013291287860864680,
+    0.013677782448938516,
+    0.014050242035004473,
+    0.014407808751512962,
+    0.014749656453816961,
+    0.015074993017178927,
+    0.015383062542810877,
+    0.015673147466228377,
+    0.015944570561490463,
+    0.016196696835209488,
+    0.016428935304546512,
+    0.016640740653757920,
+    0.016831614764226909,
+    0.017001108113297247,
+    0.017148821037626043,
+    0.017274404857185066,
+    0.017377562856465571,
+    0.017458051119878183,
+    0.017515679218785489,
+    0.017550310748059635,
+    0.017561863710518360,
+    0.017550310748059635,
+    0.017515679218785489,
+    0.017458051119878183,
+    0.017377562856465571,
+    0.017274404857185066,
+    0.017148821037626043,
+    0.017001108113297247,
+    0.016831614764226909,
+    0.016640740653757920,
+    0.016428935304546512,
+    0.016196696835209488,
+    0.015944570561490463,
+    0.015673147466228377,
+    0.015383062542810877,
+    0.015074993017178927,
+    0.014749656453816961,
+    0.014407808751512962,
+    0.014050242035004473,
+    0.013677782448938516,
+    0.013291287860864680,
+    0.012891645480250251,
+    0.012479769400753626,
+    0.012056598073216263,
+    0.011623091717033547,
+    0.011180229677740685,
+    0.010729007738800197,
+    0.010270435395702739,
+    0.009805533100592132,
+    0.009335329485698457,
+    0.008860858573909787,
+    0.008383156984833282,
+    0.007903261144690013,
+    0.007422204508355161,
+    0.006941014801796215,
+    0.006460711293076683,
+    0.005982302099982009,
+    0.005506781542188349,
+    0.005035127545733832,
+    0.004568299107366780,
+    0.004107233826136629,
+])
 
 
 # Define a bunch of variables:
@@ -464,11 +635,9 @@ last_time = 0
 delay_time = 10  # default delay time (seconds)
 flight_time = 180  # default flight time (seconds)
 rpm_setpoint = 10000  # default rpm setting
-wing_coefficient = .86  # active input filter
-wing_slope_coefficient = .89  # active output filter
-climb_threshold = 20
-dive_threshold = 20
-active_ouput_multiplier = 2.2
+climb_threshold = 13
+dive_threshold = 13
+active_ouput_multiplier = 1.5
 climb_gain = 5  # default gain
 dive_gain = 5  # default gain
 idle_us = 950
@@ -503,29 +672,30 @@ fuse_axis = -1  # default value, -1 == -x axis, can assign any axis based on the
 axis_display_name = {1: '+X', -1: '-X', 2: '+Y', -2: '-Y', 3: '+Z', -3: '-Z'}  # create dictionary of axis variable names cross referenced to their display names
 orientation_step_1 = False
 orientation_step_2 = False
-last_lap_duration = 0
+last_lap_duration = 0  # default value
+data_collection = False
+overhead_boost_setting = 5  # default overhead boost setting
+overhead_threshold = 1.2  # default threshold value for overhead boost
 
 
 # Read saved parameters from non-volatile memory:
 
 if nvm[0:6] ==  nvm[20:26] :  # if the parameters have never been saved before (brand new microcontroller), write all of the default parameters to memory
     save_parameters()
-if nvm[14:20] == nvm[20:26]:  # if updatingto latest revisions add memory items that have never been saved before, write only the new default values to memory
+    print("New microcontroller, all default parameters saved")
+if nvm[14:20] == nvm[20:26]:  # if updating to revision V1.2 (or higher) add memory items that have never been saved before, write only the new default values to memory
     array = pack('3h', last_lap_duration, wing_axis, fuse_axis)
     nvm[14:20] = array
+    read_memory()
+    print("Upgrade to v1.2, new default parameters saved")
+if nvm[30:32] == nvm[20:22]:  # if updating to revision V1.3 (or higher) add memory items that have never been saved before, write only the new default values to memory
+    array = pack('1h', overhead_boost_setting)
+    nvm[30:32] = array
+    read_memory()
+    print("Upgrade to v1.3, new default parameters saved")
 else:  # otherwise assign the saved data for use as the new current parameters
-    memory_read = nvm[0:20]
-    data = unpack('10h', memory_read)
-    delay_time = data[0]
-    flight_time = data[1]
-    rpm_setpoint = data[2]
-    climb_gain = data[3]
-    dive_gain = data[4]
-    number_of_poles = data[5]
-    motor_acceleration_setting = data[6]
-    last_lap_duration = data[7]
-    wing_axis = data[8]
-    fuse_axis = data[9]
+    read_memory()
+    print("All parameters read from memory")
 
 
 # Construct and initialize generators:
@@ -536,9 +706,11 @@ active1.send(None)
 neo_update1 = neo_update()
 neo_update1.send(None)
 
+
 # Set-up RPM signal input on pin MO/D10:
 
 pulses = PulseIn(D10, maxlen=samples, idle_state=False)
+
 
 # ESC throttle calibration routine:
 
@@ -553,6 +725,7 @@ if ESC_calibration == True:
     touch_debounced.threshold = 250  # reset the touch pin threshold to a normal value
     print("ESC Throttle Calibration Complete - Minimum Throttle Output")
 
+
 # Normal start-up at idle RPM:
 
 esc_pwm.duty_cycle = servo_duty_cycle(idle_us)  # set initial throttle to idle
@@ -560,7 +733,6 @@ print("Now in", mode, "mode")
 
 
 # Main Loop
-
 
 while True:
 
@@ -570,8 +742,11 @@ while True:
     button = not pushbutton.value  # invert the pull-up pushbutton logic to match the touch pin
     main_count = 0  # clear previous short touch count
     n += 1
+    # For testing use only - to print the average code loop time and frequency:
     if n % 1000 == 0:
-        #print((now - oldtime)/1000)  # for testing use - print the average loop time
+        #loop_period = (1000/(now - oldtime))
+        #loop_frequency = 1 / loop_period
+        #print(loop_period, loop_frequency)
         oldtime = now
 
 # each time through the main loop, the following will test the touch pin for # of short touches or if a long touch has been entered
@@ -689,7 +864,7 @@ while True:
         text_file = temp_file  # create the initial list of stirngs
         while ble.connected and waiting:  # hold off on sending opening menu until user has UART window open and sends something
             if uart_server.in_waiting:  #  incomming (RX) waits for any incomming bytes
-                send_text(0,10) # writes menu items
+                send_text(0,11) # writes menu items
                 send_text(-3,-3)  # asks to select menu item
                 waiting = False  # exits the while loop
                 uart_server.reset_input_buffer()  # discards the first bytes received
@@ -704,11 +879,16 @@ while True:
                         send_text(choice,choice)  # show selection
                         send_text(-2,-2)   # ask for new input
                         input_ble_settings(choice)  # new input function
+                    if (choice == 10):  # menu parameter selection
+                        send_text(-5,-5)  # line space
+                        send_text(choice,choice)  # show selection
+                        send_text(-2,-2)   # ask for new input
+                        input_ble_settings(choice)  # new input function
                     if (choice == 9):
                         print("Start Axis alignment routine")
                         send_text(-5,-5)  # line space
                         send_text(choice,choice)  # show selection
-                        send_text(11,12)
+                        send_text(12,13)
                         send_text(-4,-4)  # ask for input
                         orientation_step_1 = True
                         input_ble_settings(choice)  # new input function
@@ -770,6 +950,10 @@ while True:
             fault_code = 1
         if pid_out is not None:
             esc_pwm.duty_cycle = servo_duty_cycle(pid_out)
+        if (now - last_time >= 5) and (now - last_time < 10.5):  # trun on level lap data collection only between 5 and 10.5 seconds after take-off
+            data_collection = True
+        else:
+            data_collection = False
         if (now - last_time + 11) > (flight_time):  # flash the Neopixel for 10 seconds before landing mode
             neo_update1.send((WHITE, 0.05))
         if (now - last_time + 1) > (flight_time):  # time is up, prep for landing
@@ -803,7 +987,7 @@ while True:
         esc_pwm.duty_cycle = servo_duty_cycle(idle_us)
         neo_update1.send((BLANK, 0))
         while True:
-            sleep(3)  # flash codes for auto-shutdown events, 1 for prop strike, 2 for failed start, 3 for failure to reach governed RPM setpoint
+            sleep(3)  # flash codes for auto-shutdown events, 1 for prop strike or loss of signal, 2 for failed start, 3 for failure to reach governed RPM setpoint
             if fault_code > 0:
                 flash(fault_code)
             pass
