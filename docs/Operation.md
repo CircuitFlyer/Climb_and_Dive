@@ -38,17 +38,3 @@ If you need to abort the flight: After the motor starts, **any touch of the pin 
 10 seconds before the Flight mode is complete the LED will quickly flash white to indicate the end of the flight.  The motor RPM will then increase for 3 seconds before stopping to aid in a smooth approach and landing.  There is also and option to add up to 10 seconds of normal flight RPM *after* the 3 second burst of high RPM to allow extra time to prepare for the landing.  Once the motor stops the program enters the Flight Complete mode (LED off).  The power must be reset in order to exit the Flight Complete mode.
 
 Disconnect the battery, replace it with a fully charged one and repeat the process for the next flight.
-
-### Important Notes About the Active Output Function ###
-
-The use of an electronic aid to control the motor RPM during flight can be a very useful feature.  The general idea behind the active output is to help the aircraft maintain a more constant velocity throughout the entire flight.
-
-The optimal settings are largely a matter of personal preference.  That said, there is also a reasonable consensus that the active output could be overused or misapplied.  Adjustment of the parameters is a learning process that takes place over several test flights tailored to your aircraft and flying style.
-
-A good practice to follow is to turn off all active output aids while test flying and trimming a brand new airplane.  Follow standard trimming procedures to achieve the best flying airplane first, then start to experiment and add the active outputs as desired.
-
-An important requirement of the Climb_and_Dive timer is to **avoid starting any stunt maneuvers until after the completion of 2-3 laps of normal level flight after take-off**.  There are a couple of reasons for this requirement:
-
-1) The active output is suppressed for the first 5 seconds after take-off.  This is necessary in order to allow the aircraft unhindered acceleration to reach a stable cruising speed.  Therefore, do not hold the running airplane for extended periods before releasing for take-off.
-
-2) For the time period between 5 seconds and 10 seconds after take-off the timer is collecting accelerometer readings for use in a self correction procedure.  Approximately one full lap of data collection is needed to account for different wind conditions.  This self correction takes place each flight and allows changing lap times (different propellers, motor RPM or line length) without having to change any active timer settings.

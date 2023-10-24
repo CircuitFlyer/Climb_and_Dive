@@ -2,7 +2,7 @@
 title: Safety Features
 layout: default
 parent: Operation
-nav_order: 4
+nav_order: 5
 ---
 
 ## **Climb_and_Dive** ##
