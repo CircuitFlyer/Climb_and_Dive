@@ -22,7 +22,7 @@ If you prefer to purchase items separately here are some suggested sources:
 
 ## Tools Required ##
 
-Electronic soldering equipment; soldering iron, flux and solder.  These are available from numerous sources online.  If you need to brush-up on your electronics soldering skills there are some good tutorials on [Adafruit][1] and [Sparkfun][2].  You will also need a set of diagonal pliers or wire cutters and a small spring clamp.
+Electronic soldering equipment; soldering iron, flux (rosin based preferred **not** acid based) and solder.  These are available from numerous sources online.  If you need to brush-up on your electronics soldering skills there are some good tutorials on [Adafruit][1] and [Sparkfun][2].  You will also need a set of diagonal pliers or wire cutters and a small spring clamp.
 
 ## Timer Assembly ##
 
@@ -66,33 +66,10 @@ Note: If you prefer, the program code does include provisions to use an *optiona
 ![](assets/images/Pin Labels.png)
 ![](assets/images/Trimmed Pins.jpeg)
 
-## Connecting it All Together ##
+___
+**Step 7** - Optional: If you would like to clean off any residual solder flux from the joints it can usually be gently scrubbed off using an old toothbrush dipped in 99% isopropyl alcohol available from your local drug store.
 
-{: .highlight }
-When connecting the ESC servo connector be sure the **ground wire (brown or black)** is attached to the ground pin on the board, labeled **GND**.  
 
-![](assets/images/Connections.jpeg)
-![](assets/images/Climb_and_Dive Connection Diagram.png)
-
-Connect the backpack motor pins to any two of the three motor wires.  It doesn't matter which two.  For convenience I use a male JST battery style connector (just for reference: the full manufacturers name is a male JST-RYC connector).  Solder the JST connector leads into the back of the bullet connectors of the ESC motor wires.
-
-![](assets/images/Bullet Connectors.jpeg)
-
-{: .highlight }
-Note: The main reason a JST connector is suggested is only because it's a very common 2-pin connector available from just about any hobby shop.  It may not be the ideal connector if connected and disconnected frequently.  A more robust connector would be a 2-pin "Dupont" connector.  Unfortunately, these are a little harder to find but are available from online retailers.
-
-## Installation ##
-
-The flat bottom of the timer **must** be installed on a vertical part of the aircraft with the ESC/Motor connection pins pointing forward and the component side of the timer facing the pilot.  Although not super-critical, the long side of the timer should be installed so that it is horizontal when the aircraft is flying straight and level.  Calibration of the accelerometer is not required.
-
-{: .highlight }
-The description above is the **default** mounting orientation.  If you would like to install the timer in your airplane in a different orientation please refer to the page titled [Timer Mounting Position](Programming/Timer Mounting Position).
-
-A couple of pieces of adhesive backed hook and loop fastener (aka Velcro) makes quick work of holding the timer in position.
-
-Please keep in mind that the accelerometer is a very sensitive device and excessive vibration can make it difficult to get accurate readings.  If possible locate the timer away from any source of vibration.  It's a good idea to always balance new propellers before use.
-
-![](assets/images/Ringmaster Installation.jpeg)
 
 [1]: https://learn.adafruit.com/adafruit-guide-excellent-soldering
 [2]: https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering?_ga=2.264399628.2047829894.1668554338-987389297.1656854053
