@@ -43,7 +43,7 @@ Please refer to the timer Bluetooth programming section for information on where
 
 ## Castle Creations ##
 
-The Castle Creations Phoenix line of ESC's have additional complexity and warrant a separate discussion.  A Castle Link USB device and the associated software is required to upload the necessary adjustments to the ESC to make it compatible for use with the Climb_and_Dive timer.
+The Castle Creations Phoenix EDGE and TALON line of ESC's have additional complexity and warrant a separate discussion.  A Castle Link USB device and the associated software is required to upload the necessary adjustments to the ESC to make it compatible for use with the Climb_and_Dive timer.  Unfortunately, The older Castle Creations Phoenix ICE line of ESC's are not the best match for this timer.
 
 The Throttle must be setup to use **Multi-Rotor** as the Vehicle Type.  Do *not* use Control Line as a Vehicle Type.  The governor function of the Climb_and_Dive *timer* must be allowed complete control of the throttle; free from any output delay or input filtering within the ESC.  The Airplane Vehicle Type is also *not* a viable option.  Primarily due to the lack of a procedure to match the ESC throttle range to the timers fixed outputs.  Both Helicopter and External Governor types do *not* have braking enabled.
 
