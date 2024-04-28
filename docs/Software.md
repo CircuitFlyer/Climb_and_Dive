@@ -17,17 +17,17 @@ One of the great features of the Climb_and_Dive timer is the ability to update t
 The instructions below cover two separate procedures.  The first procedure is used for a quick update to the existing program code when a newer version is released.  The second procedure is used for a more in-depth update or if you purchased a blank Xiao microcontroller board from another source.
 
 {: .highlight}
-Be sure to check here from time to time to make sure you are using the most up to date version of the program code.  **Latest Version: v1.3**
+Be sure to check here from time to time to make sure you are using the most up to date version of the program code.  **Latest Version: v1.4**  Note: this version requires an update to both **code.py** AND the **lib** folder.  See the **README** included in the download for details.
 
 <span class="fs-6">
-[Click Here to download the latest program code .zip file](https://github.com/CircuitFlyer/Climb_and_Dive/archive/v1.3.0.zip){: .btn .btn-blue }
+[Click Here to download the latest program code .zip file](https://github.com/CircuitFlyer/Climb_and_Dive/archive/v1.4.2.zip){: .btn .btn-blue }
 </span>
 
 The current version installed on your timer is shown in the name of the device that appears when you connect to it via the Bluetooth app.
 
 ### Quick Update of the Software: ###
 
-If there is a newer release of the program code, use the following procedure to overwrite and replace only the one file called **code.py** on your timer.
+If there is a newer release of the program code, use the following procedure to overwrite and replace only the one file called **code.py** on your timer.  (Occasionally, additional files may also need to be updated.  See the README included in the download for details.)
 
 First, a bit of background on how CircuitPython works: Whenever the timer is powered up, CircuitPython looks for a file called **code.py**, loads it into the memory and automatically begins to run the program.  The file name must be **code.py**.  Do not rename the file for or use any other file name for the program code.  This may cause confusion as both the previous version and the newest version will have the same file name.  Hence the requirement to overwrite and replace the old version with the new version, do **not** keep both.
 

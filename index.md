@@ -32,6 +32,8 @@ Programming the microcontroller is as easy as dragging and dropping a few files 
 
 - Onboard multicolour LED to indicate the status of the timer.
 
+- Functionality to add an optional remote mounted super bright Neopixel LED so the pilot can monitor the status indicator from the centre of the circle.
+
 - Wireless programming in the field via a *free* Bluetooth app using a laptop, tablet or smart phone. The start-up delay, flight time and governed RPM settings plus a lot more can be changed without any extra tools, cards or programming boxes.
 
 - Programmable soft start.  The RPM increases over a programmable time period for smoother take-offs.

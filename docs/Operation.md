@@ -25,7 +25,7 @@ To change any of the programmable settings please refer to the Bluetooth program
 {: .warning }
 SAFETY FIRST!  Any time the battery is connected stay clear of the prop.  The aircraft should always be held or secured until the pilot is ready.  When the flight ends the pilot should wait until his/her helper disconnects the battery before putting the handle down.
 
-When ready, touch and hold the pin (a long touch of a minimum of 3 seconds), the motor will spin up at a low RPM for a second and then stop.  This short throttle 'blip' indicates the start of the flight sequence.  The timer will now be in the Start Delay mode (flashing blue).  This indicates the start of the countdown timer before the motor starts.  During the last 5 seconds of the countdown the LED will change to white and flash quickly to warn of the impending startup of the motor.
+When ready, touch and hold the pin (a long touch of a minimum of 3 seconds), the motor will spin up at a low RPM for half a second (red LED) and then stop.  This short throttle 'blip' indicates the start of the flight sequence.  The timer will now be in the Start Delay mode (flashing blue).  This indicates the start of the countdown timer before the motor starts.  During the last 5 seconds of the countdown the LED will change to white and flash quickly to warn of the impending startup of the motor.
 
 {: .highlight }
 Note: Any touch of the pin during the Start Delay mode will stop the countdown and return to the Standby mode (green).

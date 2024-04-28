@@ -1,7 +1,7 @@
 ---
 title: FAQ's
 layout: default
-nav_order: 8
+nav_order: 9
 ---
 
 ## **Climb_and_Dive** ##
@@ -14,7 +14,7 @@ nav_order: 8
 
 **Can I extend the touch sensor pin?**  Yes, you can.  You will have to experiment to make sure it works reliably, but you can add a wire to the touch sensor pin to extend the ‘sensor’ to another location.  See [Optional Modifications](Installation.html#optional-modifications) for more information.
 
-**Why don't I get the  one second throttle 'blip' when I start the timer?**  If your ESC has a procedure for throttle calibration, try that, it may help.  See [ESC Information](Power System Information#ESC Information).  Also make sure any soft start feature in the ESC is set to fast or hard start.
+**Why don't I get the short throttle 'blip' when I start the timer?**  If your ESC has a procedure for throttle calibration, try that, it may help.  See [ESC Information](Power System Information#ESC Information).  Also make sure any soft start feature in the ESC is set to fast or hard start.
 
 **The motor takes to long to get to cruising speed after take-off**  Do not hold the running airplane for an extended period before releasing for take-off.  There is a 5 second delay after the motor reaches the programmed flight RPM until the active function of the timer becomes fully operational.  This is to prevent the active function from impeding the airplane climb-out and acceleration to cruising speed.
 
