@@ -7,7 +7,7 @@
 #  microcontroller development board to create a timed PWM servo signal with accelerometer input, PID RPM control
 #  and Bluetooth LE programming suitable to conduct a typical flight of an electric powered control line model aircraft.
 
-# Timer Program Version: 1.3, Oct 2023
+# Timer Program Version: 1.4, May 2024
 # Microcontroller Board: Seeed Studio Xiao BLE, https://wiki.seeedstudio.com/XIAO_BLE/
 # Firmware: CircuitPython 7.3.3, https://circuitpython.org/board/Seeed_XIAO_nRF52840_Sense/
 # Backpack Hardware Version: 3.2
@@ -15,7 +15,7 @@
 """
 MIT License
 
-Copyright (c) 2023 CircuitFlyer (aka - Paul Emmerson) - Climb_and_Dive
+Copyright (c) 2024 CircuitFlyer (aka - Paul Emmerson) - Climb_and_Dive
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,7 @@ SOFTWARE.
 
 # Import required libraries and modules:
 
-from board import LED_RED, LED_BLUE, LED_GREEN, D6, D7, D9, D10, A0, A1, A2, A3
+from board import LED_RED, LED_BLUE, LED_GREEN, D3, D6, D7, D9, D10, A0, A1, A2
 from time import monotonic, sleep, monotonic_ns
 from touchio import TouchIn
 from pwmio import PWMOut
@@ -53,10 +53,26 @@ from adafruit_ble.advertising.standard import ProvideServicesAdvertisement
 from adafruit_ble.services.nordic import UARTService
 from adafruit_debouncer import Debouncer
 from ulab import numpy as np
+import neopixel
 
+##############################################################################
+"""
+Here are a few variables that you can change to customise your own timer.
+Do not change the names of the variables only the values assigned to them.
+Please read the instructions "Advanced Modifications" for more information.
+"""
+
+
+blip_duration = 0.5  # time in seconds for the duration of the start-up throttle blip
+blip_PWM = 1150  # throttle setting used for the short duration throttle blip
+touch_pin_sensitivity = 100  # threshold value to trigger the touch pin
+timer_name = "Climb & Dive v1.4"  # name displayed on the Bluetooth app screen, max 26 characters
+pixel_colour = "RGB"  # order of the colours used in your Neopixel
+glide_boost = 3  # time in seconds for the duration of higher RPM at the end of the flight
+
+##############################################################################
 
 # Set some things up to get started:
-
 
 # Built in RGB LED
 red_led = digitalio.DigitalInOut(LED_RED)
@@ -66,8 +82,12 @@ green_led.direction = digitalio.Direction.OUTPUT
 blue_led = digitalio.DigitalInOut(LED_BLUE)
 blue_led.direction = digitalio.Direction.OUTPUT
 
+# Optional Remote Neopixel LED on pin D3
+pixels = neopixel.NeoPixel(D3, 1, brightness=1.0, auto_write=True, pixel_order= pixel_colour)
+
 # Capacitive touch sensor input on pin RX/D7
 touch_debounced = TouchIn(D7)
+touch_debounced.threshold = touch_debounced.raw_value + touch_pin_sensitivity
 touch = Debouncer(touch_debounced, interval=0.02)  # add a debouncer to the touchio pin, default stabilization interval is .01 seconds
 
 # Optional pushbutton input on pin MI/D9
@@ -85,7 +105,7 @@ z_axis = AnalogIn(A2)
 
 # Setup bluetooth UART
 ble = BLERadio()
-ble.name = "Climb & Dive v1.3"  # name to display on Bluetooth app, max 26 (was 18) characters
+ble.name = timer_name  # name to display on Bluetooth app
 uart_server = UARTService()
 advertisement = ProvideServicesAdvertisement(uart_server)
 ble.stop_advertising()
@@ -108,13 +128,16 @@ def neo_update():  # generator used to control the color and flash rate of the b
             flash_count = 0
         if (flash_interval == 0):  # if a solid color is required, turn it on
             dot(color)
+            pixels[0] = color
             show = True
         if ((flash_interval > 0) and (now >= flash_time + flash_interval)):  # if the led is to flash, check to see if it's time to turn on or off
             if (show):  # if on, turn off
                 dot(BLANK)
+                pixels[0] = BLANK
                 show = False
             else:
                 dot(color)  # if off, turn on
+                pixels[0] = color
                 if (long_touch):
                     flash_count += 1  # record the number of flashes only if it's during a long touch (programming modes)
                 show = True
@@ -137,8 +160,10 @@ def dot(color):
 def flash(number_of_flashes):  # used to display auto-shutdown fault codes at end of flight
     for i in range(number_of_flashes):
         red_led.value = False  # turn on
+        pixels[0] = RED
         sleep(.3)
         red_led.value = True  # turn off
+        pixels[0] = BLANK
         sleep(.5)
 
 def save_parameters():  # used to write any changed parameters to non-volatile memory for the next flight
@@ -213,7 +238,6 @@ def active():  # Construct a generator to determine the accelerometer based acti
     m = 0
     data1 = np.zeros(len(taps1) + 1)  # wing output digital filter buffer
     wing_buffer = []  # wing offset calibration buffer
-    fuse_buffer = []  # fuse offset calibration buffer
     boost = 0
     brake = 0
     level_gforce = 0
@@ -221,8 +245,6 @@ def active():  # Construct a generator to determine the accelerometer based acti
     wing_coefficient = .85  # IIR filter for smoothing of the wing input accelerometer
     old_fuse_accelerometer = 0
     fuse_coefficient = .85  # IIR filter for smoothing of the fuse input accelerometer
-    fuse_accelerometer_corrected = 0
-    fuse_zero_correction_factor = 0
     noseup = False
     fuse_min = .1
     wing_min = .1
@@ -255,16 +277,12 @@ def active():  # Construct a generator to determine the accelerometer based acti
             else:
                 boost = 0
                 brake = 0
-        # Measure and calculate level flight offsets:
+        # Measure and calculate level flight normal g-force offset:
         if data_collection and (m % 20 == 0):  # collect a sample of g-force readings for a short period after take-off
             wing_buffer.append(wing_accelerometer_average)  # stream the sampled data into a buffer
             wing_buffer_data = np.array(wing_buffer)  # convert the buffer to an array
             level_gforce = np.mean(wing_buffer_data)  # determine the average reading for level laps
-            fuse_buffer.append(fuse_accelerometer)  # stream the sampled data into a buffer
-            fuse_buffer_data = np.array(fuse_buffer)  # convert the buffer to an array
-            fuse_zero_correction_factor = np.mean(fuse_buffer_data)  # determine the average reading for level laps
         wing_accelerometer_corrected = wing_accelerometer_average - level_gforce  # offset the wing input data
-        fuse_accelerometer_corrected = fuse_accelerometer_average - fuse_zero_correction_factor  # offset the fuse input data
         # Calculate overhead boost:
         if (wing_accelerometer_average - level_gforce) > overhead_threshold:
             overhead = (wing_accelerometer_average - level_gforce) - overhead_threshold  # determine when flying overhead
@@ -272,9 +290,9 @@ def active():  # Construct a generator to determine the accelerometer based acti
             overhead = 0
         overhead_boost = (overhead * overhead_boost_setting) * 40  # calculate the amount of additional overhead RPM desired
         # Determine and calculate for a noseup condition, can help reduce any delay in square corners:
-        if fuse_accelerometer_corrected > fuse_min and wing_accelerometer_corrected > wing_min and (wing_accelerometer_corrected - noseup_overhead) < 0 and slope >= 0:
+        if fuse_accelerometer_average > fuse_min and wing_accelerometer_corrected > wing_min and (wing_accelerometer_corrected - noseup_overhead) < 0 and slope >= 0:
             noseup = True
-            noseup_boost = min(noseup_max, max(0,(fuse_accelerometer_corrected - fuse_min))) * (70 * climb_gain)  # limit the maximum amount and make it proportional to climb gain
+            noseup_boost = min(noseup_max, max(0,(fuse_accelerometer_average - fuse_min))) * (70 * climb_gain)  # limit the maximum amount and make it proportional to climb gain
         else:
             noseup = False
             noseup_boost = 0
@@ -347,7 +365,7 @@ def PID(base, current_setpoint):
 
 def spool_up():
     global mode, base_us, motor_status, sample_count
-    global start_time, fault_code
+    global start_time, fault_code, old_tach
     tach = getRPM()
     if tach is not None:
         #print((tach - rpm_setpoint,))  # for testing use - plot measured RPM
@@ -355,13 +373,22 @@ def spool_up():
             new_duty_cycle = esc_pwm.duty_cycle + (motor_acceleration_setting * 2)  # value used for incrementing RPM
             new_duty_cycle = max(min(servo_duty_cycle(max_throttle_us), new_duty_cycle), servo_duty_cycle(idle_us))  # clamp it to stay within allowable range
             esc_pwm.duty_cycle = new_duty_cycle
-        if tach < (rpm_setpoint - 200) and tach > 0 and sample_count < 5:  # at motor start-up the RPM readings are not accurate.  This is required to ignoring the first few RPM samples.
+        if tach < (rpm_setpoint - 200) and tach > 0 and sample_count < 8:  # at motor start-up the RPM readings are not accurate.  This is required to ignoring the first few RPM samples.
             sample_count += 1
+        if tach < (rpm_setpoint - 200) and sample_count >= 8:
+            if tach < (old_tach - 1000) and old_tach > 2000:  # added minimum RPM due to less reliable readings at extremely low RPM's
+                print("Most recent RPM", tach, "less than previous RPM", old_tach, ", a difference of", old_tach - tach)
+                mode = "flight_complete"
+                print("Failed to accelerate properly")
+                fault_code = 2
+            if tach > old_tach:
+                old_tach = tach
         if tach >= (rpm_setpoint - 200) and sample_count >= 5:
             setpoint_duty_cycle = esc_pwm.duty_cycle
             print("output us = ", servo_us(setpoint_duty_cycle), "output duty cylce = ", esc_pwm.duty_cycle, "=", tach, "RPM")  # prints the transfer point details
             motor_status = "run"  # now under PID control
             sample_count = 0
+            old_tach = 0
             base_us = (servo_us(esc_pwm.duty_cycle))
             start_time = now
         if tach == 0 and now - last_time > (1.6 + (4/motor_acceleration_setting)):  # timeout limit if no RPM detected
@@ -665,7 +692,6 @@ start_time = 0  # this is to supply an initial value to getRPM()
 fault_code = 0
 ESC_calibration = False
 shutdown = False
-start_blip = 1100  # throttle setting for indication of start-up, short duration throttle blip
 axes = [x_axis, y_axis, z_axis]  # v1.1 build list of accelerometer axes
 wing_axis = 3  # default value, +3 == +z axis, can asign any axis based on the timer mounting orientation
 fuse_axis = -1  # default value, -1 == -x axis, can assign any axis based on the timer mounting orientation
@@ -676,6 +702,7 @@ last_lap_duration = 0  # default value
 data_collection = False
 overhead_boost_setting = 5  # default overhead boost setting
 overhead_threshold = 1.2  # default threshold value for overhead boost
+old_tach = 0
 
 
 # Read saved parameters from non-volatile memory:
@@ -717,6 +744,7 @@ pulses = PulseIn(D10, maxlen=samples, idle_state=False)
 if touch_debounced.raw_value > 500 or not button_debounced.value:  # if touch pin, or optional pushbutton is held at power-up
     esc_pwm.duty_cycle = servo_duty_cycle(max_throttle_us)  # set initial throttle to max throttle for ESC throttle Calibration
     ESC_calibration = True
+    neo_update1.send((WHITE, 0))
     print("ESC Throttle Calibration - Maximum Trottle Output")
 while touch_debounced.raw_value > 500 or not button_debounced.value:
     sleep(.05)  # wait here until touch pin or puchbutton released
@@ -743,11 +771,12 @@ while True:
     main_count = 0  # clear previous short touch count
     n += 1
     # For testing use only - to print the average code loop time and frequency:
-    if n % 1000 == 0:
+    #if n % 100 == 0:
         #loop_period = (1000/(now - oldtime))
         #loop_frequency = 1 / loop_period
         #print(loop_period, loop_frequency)
-        oldtime = now
+        #oldtime = now
+        #print((touch_debounced.raw_value,))
 
 # each time through the main loop, the following will test the touch pin for # of short touches or if a long touch has been entered
 
@@ -778,16 +807,28 @@ while True:
             ble.stop_advertising()
             print("...Stop Advertising")
         if (long_touch):  # starts the timer for a typical flight
-            mode = "delay"  # normal way to exit this mode
-            esc_pwm.duty_cycle = servo_duty_cycle(start_blip)  # set throttle to a low RPM to indicate a start-up blip
-            sleep(1.5)  # run motor for a very short period
-            esc_pwm.duty_cycle = servo_duty_cycle(idle_us)  # return throttle to idle
+            mode = "start_blip"  # normal way to exit this mode
             last_time = now  # start the timer for the start delay
             print("Now in", mode, "mode")
         if (main_count == 5):  # 5 short touches - enter the programming mode
             mode = "program_delay"  # alternate way to exit this mode
             print("Now in", mode, "mode")
             print("Current delay time is set to", delay_time, "seconds")
+
+    if (mode == "start_blip"):
+        neo_update1.send((RED, 0))
+        esc_pwm.duty_cycle = servo_duty_cycle(blip_PWM)  # set throttle to a low RPM to indicate a start-up blip
+        if (end_of_long_touch and (touch.value or button)):  # after the long touch used to enter this mode is over, any touch while in this mode will abort and return to standby
+            esc_pwm.duty_cycle = servo_duty_cycle(idle_us)  # return throttle to idle
+            mode = "standby"
+            end_of_long_touch = False  # reset flag
+            print("Now in", mode, "mode")
+        if (now - last_time > blip_duration):  # after the programmed duration advance to the delay mode
+            esc_pwm.duty_cycle = servo_duty_cycle(idle_us)  # return throttle to idle
+            mode = "delay"
+            last_time = now
+            print("Now in", mode, "mode")
+
 
     if (mode == "program_delay"):  # manual programming only - entered from standby or any other program mode
         check_ble()
@@ -966,9 +1007,9 @@ while True:
         if (touch.value or button):  # any touch will kill the motor and end the flight
             mode = "flight_complete"
             print("Now in", mode, "mode")
-        if (now - last_time) <= 3:  # start burst of higher RPM at end of flight
+        if (now - last_time) <= glide_boost:  # start burst of higher RPM at end of flight
             new_rpm_setpoint = rpm_setpoint + 1000  # increase RPM by 1000
-        if (now - last_time) > 3:  # end burst of higher RPM at end of flight
+        if (now - last_time) > glide_boost:  # end burst of higher RPM at end of flight
             new_rpm_setpoint = rpm_setpoint  # decrease the RPM back down to normal flight RPM
         pid_out = PID(base_us, new_rpm_setpoint)
         if pid_out == idle_us:
@@ -977,7 +1018,7 @@ while True:
             fault_code = 1
         if pid_out is not None:
             esc_pwm.duty_cycle = servo_duty_cycle(pid_out)
-        if (now - last_time) > (3 + last_lap_duration):  # end of flight after any last lap time
+        if (now - last_time) > (glide_boost + last_lap_duration):  # end of flight after any last lap time
             esc_pwm.duty_cycle = servo_duty_cycle(idle_us)  # set throttle to idle
             mode = "flight_complete"
             last_time = now
