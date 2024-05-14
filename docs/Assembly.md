@@ -22,7 +22,10 @@ If you prefer to purchase items separately here are some suggested sources:
 
 ## Tools Required ##
 
-Electronic soldering equipment; soldering iron, flux (rosin based preferred **not** acid based) and solder.  These are available from numerous sources online.  If you need to brush-up on your electronics soldering skills there are some good tutorials on [Adafruit][1] and [Sparkfun][2].  You will also need a set of diagonal pliers or wire cutters and a small spring clamp.
+Electronic soldering equipment; soldering iron, flux and solder.  These are available from numerous sources online.  If you need to brush-up on your electronics soldering skills there are some good tutorials on [Adafruit][1] and [Sparkfun][2].  You will also need a set of diagonal pliers or wire cutters and a small spring clamp.
+
+{: .warning }
+Do **not** use a strong acid based flux.  While this type of flux is great for home plumbing repairs and building fuel tanks, it can be very corrosive to fragile electronic circuitry. Be sure to only use a [rosin based][5] or [no-clean  type][4] flux suitable for electronics assembly.
 
 ## Timer Assembly ##
 
@@ -67,13 +70,15 @@ Note: If you prefer, the program code does include provisions to use an *optiona
 ![](assets/images/Trimmed Pins.jpeg)
 
 ___
-**Step 7** - Optional: If you would like to clean off any residual solder flux from the joints it can usually be gently scrubbed off using an old toothbrush dipped in 99% isopropyl alcohol available from your local drug store.
+**Step 7** - Optional: It's a good practice to remove any residual solder flux from the joints. You can do this by using an old toothbrush dipped in 99% Isopropyl alcohol, gently scrubbing away the remaining flux. This high-concentration alcohol is readily available at your local drug store.
 
 
 
 [1]: https://learn.adafruit.com/adafruit-guide-excellent-soldering
 [2]: https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering?_ga=2.264399628.2047829894.1668554338-987389297.1656854053
 [3]: https://www.tindie.com/products/28568/
+[4]: https://www.chipquik.com/store/product_info.php?products_id=330003
+[5]: https://www.chipquik.com/store/product_info.php?products_id=310027
 [7]: https://www.hobbytown.com/protek-rc-jst-male-connector-leads-2-ptk-5218/p23432
 [8]: https://www.amazon.com/Silicone-Connector-SIM-NAT-Connectors/dp/B071XN7C43/ref=sr_1_16?crid=231ACQ422NRUB&keywords=jst+ryc&qid=1668614414&sprefix=jst+ryc%2Caps%2C89&sr=8-16
 [9]: https://www.digikey.com/en/products/detail/seeed-technology-co-ltd/102010448/16652893?s=N4IgTCBcDaIIwFYCcB2AtHADGTWAseAHGgHIAiIAugL5A
