@@ -45,7 +45,7 @@ The 5mm through hole NeoPixel connections:
 
 Note the two short wires and two long wires.  the Data Out wire will not be used and can be trimmed off.  The connections required are fairly straightforward; 5V to +5V, GND to Ground and Data In to Xiao Pin A3/D3.  The wire colours supplied with your connector may be different from the ones shown here.  Double check for correct wiring before applying power for the first time.
 
-![](assets/images/Neopixel wiring.png)
+![](assets/images/Neopixel Wiring.png)
 
 ![](assets/images/Timer with Remote LED.jpeg)
 
