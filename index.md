@@ -64,5 +64,8 @@ Programming the microcontroller is as easy as dragging and dropping a few files 
 
 - Reprogrammable.  Have another project idea in mind?  The Xiao line of development boards have the same footprint and pinouts as the Adafruit QTPy size of boards.  The Climb_and_Dive hardware platform is also a great starting point to use in developing code for your own project.  The Xiao can also be programmed as an [Arduino device][2] if you prefer.
 
+![](assets/images/2024 Chilean F2B Champion.jpeg)
+Congratulations to Juan Francisco Sainz Valencia, 2024 Chilean F2B Champion and Climb_and_Dive timer advocate.
+
 [1]: https://learn.adafruit.com/
 [2]: https://wiki.seeedstudio.com/XIAO_BLE/
