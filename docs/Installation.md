@@ -4,16 +4,14 @@ layout: default
 nav_order: 3
 ---
 
-## **Climb_and_Dive** ##
-{: .text-blue-100}
-{: .text-right}
+{% include Header.html %}
 
 ## Installation ##
 
 The flat bottom of the timer **must** be installed on a vertical part of the aircraft with the ESC/Motor connection pins pointing forward and the component side of the timer facing the pilot.  Although not super-critical, it is important that the long side of the timer is installed so that it is horizontal when the aircraft is flying straight and level.  Calibration of the accelerometer is not required.
 
 {: .highlight }
-The description above is the **default** mounting orientation.  If you would like to install the timer in your airplane in a different orientation please refer to the page titled [Timer Mounting Position](Programming/Timer Mounting Position).
+The description above is the **default** mounting orientation.  If you would like to install the timer in your airplane in a different orientation please refer to the page titled [Timer Mounting Position](Programming/Timer Mounting Position & Calibration).
 
 A couple of pieces of adhesive backed hook and loop fastener (aka Velcro) makes quick work of holding the timer in position.
 

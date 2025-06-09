@@ -4,9 +4,7 @@ layout: default
 nav_order: 6
 ---
 
-## **Climb_and_Dive** ##
-{: .text-blue-100}
-{: .text-right}
+{% include Header.html %}
 
 ## ESC Information ##
 

@@ -10,4 +10,4 @@ This project is a progression of the original basic Touch and Go timer.  I wante
 
 ## Instructions
 
-All of the assembly, programming and operating instructions can be found in the instruction manual on the document pages, [www.circuitflyer.com](https://circuitflyer.com)  The program files can be downloaded from the web page or from the release tab above.
+All of the assembly, programming and operating instructions can be found in the instruction manual on the document pages, [www.circuitflyer.com](https://circuitflyer.com/Climb_and_Dive/)  The program files can be downloaded from within the web pages or from the release tab above.

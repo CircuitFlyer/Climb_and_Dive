@@ -4,9 +4,7 @@ layout: default
 nav_order: 8
 ---
 
-## **Climb_and_Dive** ##
-{: .text-blue-100}
-{: .text-right}
+{% include Header.html %}
 
 ## Advanced Modifications ##
 
@@ -52,7 +50,9 @@ Note the two short wires and two long wires.  the Data Out wire will not be used
 {: .highlight }
 The NeoPixel connections described above are not necessarily the ideal recommended connection circuitry but, it has been tested and works well in this particular case.
 
-Note: If you would like to use a different Neopixel or WS2812 LED other than the one suggested above, you may have to change the pixel order in the program code for it to illuminate the correct colours.  See below for details.
+Note 1: If you would like to use a different Neopixel or WS2812 LED other than the one suggested above, you may have to change the pixel order in the program code for it to illuminate the correct colours.  See below for details.
+
+Note 2: If you are also using the optional push-button start switch then there will be (2) wires connected to the ground pin (GND).  That is permissible as both the Neopixel and the switch share a common ground circuit.
 
 <br>
 
@@ -79,6 +79,7 @@ The following table summarizes the variables available for modification:
 | timer_name | “Climb & Dive vX.X” | Name displayed on Bluetooth app |
 | pixel_colour | “RGB” | Order of coloured pixels |
 | glide_boost | 3 | Length of high RPM at end of flight |
+| corner_boost_duration | 0.6 | Length of corner boost |
 
 **Detailed Description, Restrictions and Warnings**
 
@@ -87,8 +88,8 @@ The following table summarizes the variables available for modification:
 **touch_pin_sensitivity** - This is an arbitrary number that you can use to adjust the sensitivity of the touch pin.  Be careful using values below 30 as it may become very sensitive and easy to trigger accidentally.<br>
 **timer_name** - If you have several timers you may like to change the name displayed on the Bluetooth app when you connect.  **Warning: the maximum number of characters (including spaces and punctuation) is limited to 26.**  If you exceed that the program code will throw an error and stop.  You may have to connect to your phone at least one time in order to see the change.<br>
 **pixel_colour** - Neopixels come in different flavours.  Some have a pixel order of red-green-blue, "RGB", and others are green-red-blue, "GRB".  This is where you can change the pixel order in case the Neopixel you choose has the red and green colours inverted.<br>
-**glide_boost** - This is the length of time, in seconds, that the motor runs at a higher RPM at the end of the flight sequence.  You may prefer to increase or decrease this time.
-
+**glide_boost** - This is the length of time, in seconds, that the motor runs at a higher RPM at the end of the flight sequence.  You may prefer to increase or decrease this time.<br>
+**corner_boost_duration** - This is the length of time, in seconds, that the motor operates at the higher programmed RPM after the timer identifies a sharp corner.
 
 
 [1]: https://www.adafruit.com/

@@ -4,9 +4,7 @@ layout: default
 nav_order: 2
 ---
 
-## **Climb_and_Dive** ##
-{: .text-blue-100}
-{: .text-right}
+{% include Header.html %}
 
 ## Bill of Materials ##
 

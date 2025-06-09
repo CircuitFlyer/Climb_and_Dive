@@ -4,9 +4,7 @@ layout: default
 nav_order: 5
 ---
 
-## **Climb_and_Dive** ##
-{: .text-blue-100}
-{: .text-right}
+{% include Header.html %}
 
 ## Bluetooth App Installation ##
 

@@ -5,9 +5,7 @@ parent: Operation
 nav_order: 1
 ---
 
-## **Climb_and_Dive** ##
-{: .text-blue-100}
-{: .text-right}
+{% include Header.html %}
 
 ## Bluetooth Programming Instructions ##
 
@@ -39,11 +37,17 @@ Enter the number of magnetic poles used in your motor.  The timer needs this inf
 **Last Lap Time**<br>
 Enter the amount of time from 0 to 10 seconds that you would like the motor to run at normal speed *after* the short burst of high RPM at the end of the flight.  If you prefer to use the short burst of high RPM to set-up for a better landing glide, set this time to 0.  If you prefer the use the short burst of high RPM as a warning signal to indicate the end of the flight, enter a length of time that allows you prepare for landing.
 
-**Mounting Position**<br>
-This programming option is only required if you want to install the timer in an orientation other than the default position shown in the assembly instructions.  For further information and details of the programming procedure, please refer to the page titled [Timer Mounting Position](Timer Mounting Position).
+**Mounting Position & Calibration**<br>
+This programming option is required if you want to install the timer in an orientation other than the default position shown in the assembly instructions.  This option is also required and must be completed prior to using the Corner Boost feature described below. For further information and details of the programming procedure, please refer to the page titled [Timer Mounting Position & Calibration](Timer Mounting Position & Calibration).
 
 **Overhead Boost**<br>
 The overhead boost setting is an arbitrary multiplier with a value from 0 through 10 (integer values only).  This number is used to adjust the amount of extra motor RPM that is added when flying high overhead.  0 turns the feature off and a setting of 10 would give the maximum boost in RPM when flying overhead.  Most pilots will likely use a setting between 4 and 6.
+
+**Corner Boost Gain**<br>
+The corner boost setting is an arbitrary multiplier with a value of 0 thru 10 (integer values only).  This number is used to adjust the amount of extra motor RPM that is added when flying the lower altitude sharp corners required for certain aerobatic maneuvers.  A sharp turn can slow the airplane down.  Adding an extra boost of power in the turn can help maintain airspeed.  0 turns the feature off and a setting of 10 would give the maximum boost in RPM during a sharp turn.  Most pilots will likely use a setting of 4 or 5. **Note:** this feature is only available after the timer mounting position and calibration procedure has been completed.
+
+**E-Stop**<br>
+The emergency stop feature can be used to end the flight before the normal programmed flight time is complete.  This feature has three settings; OFF, TEST and ON.  For the complete details on how it is activated and used please see the page entitled [Emergency Stop](Emergency Stop).
 
 The table below summarizes the programmable settings available and their default values:
 
@@ -58,7 +62,10 @@ The table below summarizes the programmable settings available and their default
 | Number of Motor Poles | 2 to 24 | 14 |
 | Last Lap Time | 0 to 10 | 0 |
 | Mounting Position| - | +Z, -X |
+| & Calibration| - | 0.0, 0.0 |
 | Overhead Boost | 0 to 10 | 5 |
+| Corner Boost| 0 to 10 | 0 |
+| E-Stop | OFF, TEST, ON | OFF |
 
 <br>
 
@@ -85,6 +92,28 @@ The UART module will open but the screen will be blank.
 **Step 6** - Tell the timer that you now have the screen open by hitting the **Send** button once.  The timer will respond and list all of the current settings.
 
 ![](assets/images/Bluefruit 4.png)
+
+<details markdown="block">
+
+<summary> Click here if your page doesn't look like the one above.</summary>
+
+Your Bluefruit Connect UART page may look different if you may have the Display Mode set to Timestamp and not Text.
+
+![](assets/images/Timestamp 1.png)
+
+Under the gear shaped icon in the top righthand corner you will find the drop-down menu to change the Display Mode.
+
+![](assets/images/Timestamp 2.png)
+
+Change the Display Mode to **Text**.
+
+![](assets/images/Timestamp 3.png)
+
+Close the menu and now your page will be less cluttered without the timestamp information.
+
+Moving on:
+
+</details>
 
 **Step 7** - Enter the *item number* of the setting you would like to change into the text box then hit **Send**.  The timer will then show the current setting and ask for the new one.
 

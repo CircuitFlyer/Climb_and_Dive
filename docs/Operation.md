@@ -5,9 +5,7 @@ nav_order: 7
 has_children: true
 ---
 
-## **Climb_and_Dive** ##
-{: .text-blue-100}
-{: .text-right}
+{% include Header.html %}
 
 ## Operating Instructions ##
 

@@ -4,51 +4,70 @@ layout: home
 nav_order: 1
 ---
 
-## **Climb_and_Dive** ##
-{: .text-blue-100}
-{: .text-right}
-
+{% include Header.html %}
+<br>
 ![](assets/images/Assembled 1.jpg)
 
-## Overview ##
+# Revolutionary Active Control for Electric Control Line Flying!
+{: .text-center }
 
-Climb_and_Dive is an open source do-it-yourself project to create your own advanced timer for an electric powered control line model aircraft.  Utilizing a low cost popular microcontroller development board coupled to an add-on circuit board the timer is compact, simple to use and packed with features.
+## What It Is
+Climb_and_Dive is an open-source, do-it-yourself project that lets you build an advanced timer for electric-powered control line model aircraft. The Climb_and_Dive timer isn't just a simple switch - it's an intelligent flight control system that **actively monitors and responds** to your aircraft's flight conditions in real-time. This compact timer combines a low-cost microcontroller development board with a custom add-on circuit board to deliver professional features in a simple, user-friendly package.
 
-You may have heard of a governing timer.  You may have heard of an active timer.  The Climb_and_Dive timer is both, an active & governing timer.  On top of that, it can be wirelessly programmed via a Bluetooth connection on a smart phone!  No more opening hatches, fiddling with connectors or programming boxes.  Because it’s open source, you can customize the functionality to your liking or even add some new features.
+## Unique Capabilities
+The Climb_and_Dive timer stands out as both an **active timer** and a **governing timer** in one device. What makes it truly innovative is its **wireless programming capability** through Bluetooth and your smartphone. This eliminates the hassle of opening hatches, dealing with connectors, or using separate programming boxes.
 
-The timer is available as a DIY kit that only requires soldering some header pins to assemble.  The kit consists of two major parts, the Seeed Studio Xiao NRF52840 development board and an additional circuit board, referred to as a backpack. The backpack contains the accelerometer and RPM signal conditioning circuitry that makes wiring and assembly fast and easy.
+The program code includes **built-in safety features** that provide an additional layer of protection for your power system, helping prevent damage if something unexpected occurs during operation.
 
-Programming the microcontroller is as easy as dragging and dropping a few files on your computer.  The program code also includes a few features that can add an additional layer of safety to protect your power system in case something doesn't go as expected.
+Since it's open source, you have complete freedom to customize the functionality or add new features to suit your specific needs.
+
+## Simple Assembly
+The timer comes as a DIY kit that requires minimal assembly—just soldering some header pins. The kit includes two main components:
+
+- **Seeed Studio Xiao NRF52840 development board** (the main microcontroller)
+- **Custom backpack circuit board** (contains the accelerometer and RPM signal conditioning circuitry)
+
+The backpack design streamlines wiring and makes assembly fast and straightforward.
+
+## Easy Programming and Updates
+Programming the microcontroller is incredibly simple—just drag and drop a few files on your computer. The microcontroller comes pre-programmed and tested, so you can start using it immediately.
+
+As new features are released, you can easily [update your timer's code](docs/Software#software-installation) using the same simple drag-and-drop process, ensuring your device stays current with the latest improvements and capabilities.
+<br> <br>
 
 <span class="fs-6">
 [Click Here to order a **Climb_and_Dive** kit on **Tindie**](https://www.tindie.com/products/28568/){: .btn .btn-green}
 </span>
 
-## List of Features ##
+## Extensive List of Features ##
 
 - Dimensions: 27mm x 18mm x 9mm.  Weight: 5g.  Ideal for mounting on the side of a profile fuselage.
 
-- Touch sensitive pin for user input.  No additional switches or buttons to wire and mount.  Although, if desired, the program code does allow for use with an optional remote push-button switch.
+- An onboard accelerometer provides a programmable automatic boost in power during a climb as well as a seperate programmable decrease in power while in a dive.
+
+- RPM throughout the flight is actively monitored and controlled by sensing the motor voltage using a feedback control loop.  No need for a tachometer.  No guesswork.  The RPM you set is the RPM you get.
+
+- Works with lower cost ESC’s.  The governing function takes place in the timer so expensive governing ESC’s are not required.
+
+- Wireless programming in the field via a *free* Bluetooth app using a laptop, tablet or smart phone. The start-up delay, flight time and governed RPM settings plus a lot more can be changed without any extra tools, cards or programming boxes.
+
+- Touch sensitive pin for user input.  No additional switches or buttons to wire and mount.  If desired, the program code does provide for an optional remote push-button switch.
 
 - Onboard multicolour LED to indicate the status of the timer.
 
 - Functionality to add an optional remote mounted super bright Neopixel LED so the pilot can monitor the status indicator from the centre of the circle.
 
-- Wireless programming in the field via a *free* Bluetooth app using a laptop, tablet or smart phone. The start-up delay, flight time and governed RPM settings plus a lot more can be changed without any extra tools, cards or programming boxes.
+- The ability to improve overhead line tension by increasing the motor RPM only when flying high overhead.
+
+- Programmable extra RPM boost in the bottom sharp corners of stunt maneuvers.
+
+- Innovative pilot operated **emergency stop feature**.  3 quick pulls on the control handle will stop the flight so you can safely land the airplane at any time.
 
 - Programmable soft start.  The RPM increases over a programmable time period for smoother take-offs.
 
 - A 3 second boost in RPM at the conclusion of a flight to improve the landing glide or as a warning to indicate the impending end of the flight.
 
-- An onboard accelerometer provides a programmable active boost in power during a climb as well as a decrease in power in a dive.  Accelerometer calibration is not required.
-
-- The ability to improve overhead line tension by increasing the motor RPM only when flying high overhead.
-
-- Constant RPM throughout the flight is maintained by sensing the motor voltage using a PID control feedback loop.  No need for a tachometer.  The RPM number you program is the RPM you get at the propeller.
-
-- Works with lower cost ESC’s.  The governing function takes place in the timer so expensive governing ESC’s are not required.
-
-- Following a simple programming procedure the timer can be mounted in any orientation in the airplane.
+- Following a simple programming & calibration procedure the timer can be mounted in any orientation in the airplane.
 
 - Power to the motor is cut off quickly and automatically if the propeller inadvertently strikes the ground.  No more burned out motors or ESC’s from a crash or nose-over on takeoff.
 

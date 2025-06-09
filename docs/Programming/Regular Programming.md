@@ -5,9 +5,7 @@ parent: Operation
 nav_order: 2
 ---
 
-## **Climb_and_Dive** ##
-{: .text-blue-100}
-{: .text-right}
+{% include Header.html %}
 
 ## Programming Without a Wireless Connection ##
 
