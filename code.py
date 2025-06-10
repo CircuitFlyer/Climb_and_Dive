@@ -7,7 +7,7 @@
 #  microcontroller development board to create a timed PWM servo signal with accelerometer input, PID RPM control
 #  and Bluetooth LE programming suitable to conduct a typical flight of an electric powered control line model aircraft.
 
-# Timer Program Version: 1.5, June 2025
+# Timer Program Version: 1.5.1, June 2025
 # Microcontroller Board: Seeed Studio Xiao BLE, https://wiki.seeedstudio.com/XIAO_BLE/
 # Firmware: CircuitPython 7.3.3, https://circuitpython.org/board/Seeed_XIAO_nRF52840_Sense/
 # Backpack Hardware Version: 3.2
@@ -66,7 +66,7 @@ Please read the instructions "Advanced Modifications" for more information.
 blip_duration = 0.5  # time in seconds for the duration of the start-up throttle blip
 blip_PWM = 1150  # throttle setting used for the short duration throttle blip
 touch_pin_sensitivity = 100  # threshold value to trigger the touch pin
-timer_name = "Climb & Dive v1.5"  # name displayed on the Bluetooth app screen, max 26 characters
+timer_name = "Climb & Dive v1.5.1"  # name displayed on the Bluetooth app screen, max 26 characters
 pixel_colour = "GRB"  # order of the colours used in your Neopixel
 glide_boost = 3  # time in seconds for the duration of higher RPM at the end of the flight
 corner_boost_duration = 0.6  # time in seconds for the duration of the higher RPM boost in bottom corners
