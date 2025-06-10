@@ -1124,7 +1124,7 @@ while True:
                 mode = "take-off"
                 last_time = now
                 start_time = now
-                esc_pwm.duty_cycle = servo_duty_cycle(1090)  # jump throttle ahead to reduce delay before motor starts to turn
+                esc_pwm.duty_cycle = servo_duty_cycle(1130)  # jump throttle ahead to reduce delay before motor starts to turn
                 print("Now in", mode, "mode")
 
         if (mode == "take-off"):  # mode to slowly ramp up the RPM for a smooth take-off
