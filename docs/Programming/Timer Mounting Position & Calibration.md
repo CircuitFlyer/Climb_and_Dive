@@ -7,19 +7,19 @@ nav_order: 3
 
 {% include Header.html %}
 
-## Programming the Timer Mounting Position ##
+## Programming the Timer Mounting Position & Calibration ##
 
 ### Description ###
 
 {: .highlight }
-Note: If upgrading to v1.5 - The following instructions have been revised to include additional steps to include calibration of the accelerometer.  This calibration is required before you can program the new corner boost feature.
+**New for v1.5** - The following instructions have been revised to include additional steps to calibrate the accelerometer.  **Before you can program the new Corner Boost feature the Mounting Position & Calibration procedure must be completed.**
 
-The following instructions apply if you would like to install the timer on your airplane in an orientation other than the **default** mounting position described in the [assembly instructions](../Assembly#installation).  If you are using the default mounting position, the timer is already programmed with the default settings and is ready to use.
+The following instructions needs to be completed after mounting the timer in the airplane, *or* if you change the timer orientation for any reason. Even if you have installed the timer on your airplane in the **default** mounting position, this procedure is still necessary in order to complete the calibration sequence. Although this procedure only needs to be completed once, it can be repeated if necessary.
 
-The programming procedure for this feature is slightly different than the other items in the Bluetooth programming menu so therefore warrant more detailed instructions.  This procedure only needs to be done once after mounting the timer in the airplane, or if you change the timer orientation for any reason.
+The programming procedure for this feature is slightly different than the other items in the Bluetooth programming menu so therefore warrant more detailed instructions.  
 
 **Overview**<br>
-First, a brief explanation of why this is necessary.  The accelerometer used by the timer actually has (3) separate accelerometers inside.  Each measurement axis is orientated 90 degrees to each other.  In addition, each measurement axis has a positive and negative direction.
+First, a brief explanation of why this is necessary.  The accelerometer used by the timer has (3) separate accelerometers inside.  Each measurement axis is orientated 90 degrees to each other.  In addition, each measurement axis has a positive and negative direction.
 
 ![](assets/images/Accelerometer Axes.png)
 
@@ -60,7 +60,7 @@ Finally, the prompt will ask you to rotate the airplane so that both the wings a
 ![](assets/images/Bluefruit 9.png)
 
 **Results**<br>
-The menu will reappear showing the new accelerometer axes assigned to the airplanes wing and fuselage axes.  The **default orientation** of the timer uses the +Z axis assigned to the wing axis and the -X axis assigned to the fuselage axis.  All other mounting orientations will use a different combination of axes and signs.
+The menu will reappear showing the accelerometer axes assigned to the airplanes wing and fuselage axes.  The **default orientation** of the timer uses the +Z axis assigned to the wing axis and the -X axis assigned to the fuselage axis.  All other mounting orientations will use a different combination of axes and signs.
 
 The Calibration results will be displayed as two numbers.  The first number will be used as the scale factor to correct for any slope errors.  The second number is used to offset the accelerometer readings so that they centre around 0.  Each particular timer and installation will use different values.
 
