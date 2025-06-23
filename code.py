@@ -7,7 +7,7 @@
 #  microcontroller development board to create a timed PWM servo signal with accelerometer input, PID RPM control
 #  and Bluetooth LE programming suitable to conduct a typical flight of an electric powered control line model aircraft.
 
-# Timer Program Version: 1.5.1, June 2025
+# Timer Program Version: 1.5.2, June 2025
 # Microcontroller Board: Seeed Studio Xiao BLE, https://wiki.seeedstudio.com/XIAO_BLE/
 # Firmware: CircuitPython 7.3.3, https://circuitpython.org/board/Seeed_XIAO_nRF52840_Sense/
 # Backpack Hardware Version: 3.2
@@ -66,8 +66,8 @@ Please read the instructions "Advanced Modifications" for more information.
 blip_duration = 0.5  # time in seconds for the duration of the start-up throttle blip
 blip_PWM = 1150  # throttle setting used for the short duration throttle blip
 touch_pin_sensitivity = 100  # threshold value to trigger the touch pin
-timer_name = "Climb & Dive v1.5.1"  # name displayed on the Bluetooth app screen, max 26 characters
-pixel_colour = "GRB"  # order of the colours used in your Neopixel
+timer_name = "Climb & Dive v1.5.2"  # name displayed on the Bluetooth app screen, max 26 characters
+pixel_colour = "RGB"  # order of the colours used in your Neopixel
 glide_boost = 3  # time in seconds for the duration of higher RPM at the end of the flight
 corner_boost_duration = 0.6  # time in seconds for the duration of the higher RPM boost in bottom corners
 
@@ -384,7 +384,7 @@ def getRPM():
     global start_time
     if (now - start_time) > .02:  # set min sample time to collect all required samples at the desired resolution (5000RPM min). This is also used for a fixed time interval for PID calculations
         pulses.pause()
-        if (len(pulses) >= 4):  # if there is the minimum number of samples
+        if (len(pulses) >= 6):  # if there is the minimum number of samples
             for i in range(len(pulses)):  # used to ignore extrememly short pulses that get past the RPM signal conditioining circuit
                 if pulses[i] < 40:
                     pass
@@ -397,7 +397,7 @@ def getRPM():
                 RPM = 0
             if (RPM > 60_000):  # needed to read 0 RPM
                 RPM = 0
-        if (len(pulses) < 4):  # minimum samples
+        if (len(pulses) < 6):  # minimum samples
             RPM = 0
         total = 0
         valid_samples = 0
@@ -438,13 +438,13 @@ def spool_up():
     tach = getRPM()
     if tach is not None:
         #print((tach - rpm_setpoint,))  # for testing use - plot measured RPM
-        if tach > 0 and tach < (rpm_setpoint - 200):  # bump the throttle if RPM is valid but has not yet reached the transfer point to PID control
+        if tach < (rpm_setpoint - 200):  # bump the throttle if RPM is valid but has not yet reached the transfer point to PID control
             new_duty_cycle = esc_pwm.duty_cycle + (motor_acceleration_setting * 2)  # value used for incrementing RPM
             new_duty_cycle = max(min(servo_duty_cycle(max_throttle_us), new_duty_cycle), servo_duty_cycle(idle_us))  # clamp it to stay within allowable range
             esc_pwm.duty_cycle = new_duty_cycle
-        if tach > 0 and sample_count < 12:  # at motor start-up the RPM readings are not accurate.  This is required to ignoring the first few RPM samples.
+        if tach < (rpm_setpoint - 200) and tach > 0 and sample_count < 8:  # at motor start-up the RPM readings are not accurate.  This is required to ignoring the first few RPM samples.
             sample_count += 1
-        if tach < (rpm_setpoint - 200) and sample_count >= 12:  # shutdown if there is a decrease in RPM
+        if tach < (rpm_setpoint - 200) and sample_count >= 8:  # shutdown if there is a decrease in RPM
             if tach < (old_tach - 1000) and old_tach > 2000:  # added minimum RPM due to less reliable readings at extremely low RPM's
                 print("Most recent RPM", tach, "less than previous RPM", old_tach, ", a difference of", old_tach - tach)
                 mode = "flight_complete"
@@ -452,7 +452,7 @@ def spool_up():
                 fault_code = 4
             if tach > old_tach:
                 old_tach = tach
-        if tach >= (rpm_setpoint - 200) and sample_count >= 12:  # PID transfer point
+        if tach >= (rpm_setpoint - 200) and sample_count >= 5:  # PID transfer point
             setpoint_duty_cycle = esc_pwm.duty_cycle
             print("output us = ", servo_us(setpoint_duty_cycle), "output duty cylce = ", esc_pwm.duty_cycle, "=", tach, "RPM")  # prints the transfer point details
             motor_status = "run"  # now under PID control
