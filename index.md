@@ -36,7 +36,7 @@ As new features are released, you can easily [update your timer's code](docs/Sof
 <br> <br>
 
 <span class="fs-6">
-[Click Here to order a **Climb_and_Dive** kit on **Tindie**](https://www.tindie.com/products/28568/){: .btn .btn-green}
+[Click Here to order a **Climb_and_Dive** kit on **Lectronz**](https://lectronz.com/products/climb_and_dive){: .btn .btn-green}
 </span>
 
 ## Extensive List of Features ##
@@ -84,7 +84,7 @@ As new features are released, you can easily [update your timer's code](docs/Sof
 - Reprogrammable.  Have another project idea in mind?  The Xiao line of development boards have the same footprint and pinouts as the Adafruit QTPy size of boards.  The Climb_and_Dive hardware platform is also a great starting point to use in developing code for your own project.  The Xiao can also be programmed as an [Arduino device][2] if you prefer.
 
 ![](assets/images/2024 Chilean F2B Champion.jpeg)
-Congratulations to Juan Francisco Sainz Valencia, 2024 Chilean F2B Champion and Climb_and_Dive timer advocate.
+Congratulations to Juan Francisco Sainz Valencia, 2024 & 2025 Chilean F2B Champion and Climb_and_Dive timer advocate.
 
 [1]: https://learn.adafruit.com/
 [2]: https://wiki.seeedstudio.com/XIAO_BLE/
