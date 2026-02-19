@@ -11,7 +11,7 @@ nav_order: 5
 The preferred Bluetooth app is called ***Bluefruit Connect*** published by Adafruit industries and is available as a free download from both [Android Google Play][2] or from the [Apple App Store][1].  Adafruit publishes this app as a generic Bluetooth, or BLE (Bluetooth Low Energy), development tool for programmers and hobbyists to experiment with the various Bluetooth enabled development boards that they offer.
 
 {: .highlight }
-**New Issue:** December 20, 2025 - It seems Google has recently made changes with Android Version 16.  When installing the Adafruit Bluefruit Connect app, Google Play may say ‘This app isn’t available for your device because it was made for an older version of Android'. Adafruit is aware of the issue and hopefully will update the app soon. Until then, you may have to use another device that uses a version of Android or iOS that is compatible. Note: The current app also functions on tablet, laptop and desktop computers.
+**Update:** Feb 18, 2026 - The Adafruit Bluefruit Connect app is back in the Google Play store!  It was temporarily removed while Adafruit developers upgraded to the latest requirements from Google.
 
 The Bluefruit Connect app is capable of several different tasks.  Communication with the Climb_and_Dive timer only requires the use of the UART Service.  UART is a standardized communications protocol used to transfer data between different devices.  Pairing is not required.
 
