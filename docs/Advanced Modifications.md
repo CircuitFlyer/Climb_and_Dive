@@ -56,7 +56,7 @@ Note 2: If you are also using the optional push-button start switch then there w
 
 <br>
 
-**Additional Parameters Accessible within the Program Code**
+### Additional Parameters Accessible within the Program Code ###
 
 For users that might like to modify some of the other settings written into the code I have specifically listed a few variables near the top of the code for easy access.  These variables can be changed from the default values and then saved back onto the timer using a simple text editor program on your computer.
 
