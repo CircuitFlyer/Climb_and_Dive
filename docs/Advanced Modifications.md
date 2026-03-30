@@ -57,7 +57,7 @@ Note 2: If you are also using the optional push-button start switch then there w
 <br>
 
 ### Additional Parameters Accessible within the Program Code ###
-
+<br>
 For users that might like to modify some of the other settings written into the code I have specifically listed a few variables near the top of the code for easy access.  These variables can be changed from the default values and then saved back onto the timer using a simple text editor program on your computer.
 
 Connect the timer to your computer using an appropriate USB data cable.  A removable drive called CIRCUITPY should appear.  Inside the drive you will find the timer program file named code.py.  Right click on the file name and select ‘Open With’ from the menu that appears.  On Mac computers, select ‘TextEdit’ to open and edit the code.py file.  On Windows computers, select ‘Notepad’ to open and edit the file.
