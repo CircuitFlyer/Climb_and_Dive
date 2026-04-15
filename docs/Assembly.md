@@ -8,14 +8,14 @@ nav_order: 2
 
 ## Bill of Materials ##
 
-Complete project kits can be purchased on [**Tindie**][12].  Each kit comes complete with the program code already installed and  the circuit boards fully tested.
+Complete project kits can be purchased on [**Lectronz**][12].  Most users choose to order a fully assembled timer.  The following instructions are provided if you want to assemble your own for maximum customization. All kits come complete with the program code already installed and the circuit boards fully tested.
 
 If you prefer to purchase items separately here are some suggested sources:
 
 | Qty | Description | Online Sources |
 | :---: | ----------- | ------------- |
 | 1 | Seeed Studio Xiao nRF52840<br>(The cheaper one, not the 'Sense' version) | [Digikey][9]<br>[Mouser][10]<br>[Seeed Studio][11]  |
-| 1 | Climb_and_Dive Backpack w/ 5 pin RA Header Strip| [Tindie][3] |
+| 1 | Climb_and_Dive Backpack w/ 5 pin RA Header Strip| [Lectronz][3] |
 | 1 | JST Battery Connector (Optional) | [HobbyTown][7]<br>[Amazon][8] |
 
 ## Tools Required ##
@@ -59,13 +59,19 @@ ___
 ![](assets/images/Solder Xiao Top.jpg)
 
 ___
-**Step 6** - Now you can trim off *only* the long header pins that you don't need.  Do **not** cut the touch pin, leave it sticking out.
+**Step 6** - At this point you can trim off *only* the long header pins that you *don't* need.  You have some choices to make.  First off, do **not** cut the touch pin, leave it sticking out.
 
-{: .highlight }
-Note: If you prefer, the program code does include provisions to use an *optional* push-button switch instead of the touch pin.  If you want to use a push-button switch it will connect to the timer using the 2 pins as shown below.  Depending how you want to connect your switch, you may want to leave those two pins sticking out as well.  The push-button switch functions exactly the same as the touch pin.  Note: use a normally open (NO) momentary contact type switch.
+Next, decide if you would like to add an *optional* push-button switch to use instead of the touch pin.  The push-button switch connects to two timer pins. Depending how you want to connect your switch, you may want to leave those two pins sticking out as it makes connecting the switch much easier.  The push-button switch functions exactly the same as the touch pin.  Note: you must use a **normally open (NO) momentary contact type switch**.  The touch pin will remain usable and works in parallel with the push-button switch. A push-button switch connects to the timer using the 2 pins as shown below.
 
-![](assets/images/Pin Labels.png)
-![](assets/images/Trimmed Pins.jpeg)
+![](assets/images/Switch pins.png)
+
+Next, decide if you would like to add an *optional* remotely mounted addressable LED status indicator light.  See the [**Advanced Modifications**][13] page for details. An addressable LED uses three timer pins.  Again, leaving these pins sticking out can make future connections much easier.  An LED connects to the timer using the 3 pins as shown below.
+
+![](assets/images/LED pins.png)
+
+I recommend that you leave *all* options available. In that case, you need to leave all 5 pins untrimmed as shown below.  This configuration is the best for attaching the accessory <a href="https://circuitflyer.com/Control_Panel/" target="_blank" rel="noopener noreferrer">**Control_Panel** </a> remote interface.
+
+![](assets/images/All pins.png)
 
 ___
 **Step 7** - Optional: It's a good practice to remove any residual solder flux from the joints. You can do this by using an old toothbrush dipped in 99% Isopropyl alcohol, gently scrubbing away the remaining flux. This high-concentration alcohol is readily available at your local drug store.
@@ -74,7 +80,7 @@ ___
 
 [1]: https://learn.adafruit.com/adafruit-guide-excellent-soldering
 [2]: https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering?_ga=2.264399628.2047829894.1668554338-987389297.1656854053
-[3]: https://www.tindie.com/products/28568/
+[3]: https://lectronz.com/products/climb_and_dive
 [4]: https://www.chipquik.com/store/product_info.php?products_id=330003
 [5]: https://www.chipquik.com/store/product_info.php?products_id=310027
 [7]: https://www.hobbytown.com/protek-rc-jst-male-connector-leads-2-ptk-5218/p23432
@@ -82,4 +88,5 @@ ___
 [9]: https://www.digikey.com/en/products/detail/seeed-technology-co-ltd/102010448/16652893?s=N4IgTCBcDaIIwFYCcB2AtHADGTWAseAHGgHIAiIAugL5A
 [10]: https://www.mouser.com/ProductDetail/Seeed-Studio/102010448?qs=Znm5pLBrcAJ5g%252BWAkitg4w%3D%3D
 [11]: https://www.seeedstudio.com/Seeed-XIAO-BLE-nRF52840-p-5201.html
-[12]: https://www.tindie.com/products/28568/
+[12]: https://lectronz.com/products/climb_and_dive
+[13]: http://127.0.0.1:4000/docs/Advanced%20Modifications.html#new---as-an-accessory-product-i-now-also-offer-an-easy-to-install-remote-mounted-user-interface--it-combines-a-remote-pushbutton-start-switch-and-a-super-bright-status-indicator-led-pre-soldered-to-a-printed-circuit-board-ready-to-install-on-your-airplane--check-out-all-the-details-here-

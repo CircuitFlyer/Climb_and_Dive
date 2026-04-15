@@ -29,6 +29,8 @@ The timer comes as a DIY kit that requires minimal assembly—just soldering som
 
 The backpack design streamlines wiring and makes assembly fast and straightforward.
 
+### GREAT NEWS! **- I now also offer an easy to install remote mounted user interface.  Add a remote pushbutton start switch and a super-bright status indicator LED to your timer.  Check out all the details <a href="https://circuitflyer.com/Control_Panel/" target="_blank" rel="noopener noreferrer">HERE </a>**
+
 ## Easy Programming and Updates
 Programming the microcontroller is incredibly simple—just drag and drop a few files on your computer. The microcontroller comes pre-programmed and tested, so you can start using it immediately.
 

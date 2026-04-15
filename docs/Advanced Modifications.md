@@ -31,13 +31,18 @@ Be careful to never short the power pins to ground.  The 5V pin can only provide
 
 **Remote Addressable LED Indicator**
 
-Recent code changes allow the attachment of a super-bright status LED to the timer.  NeoPixel is the name Adafruit uses to describe WS2812 addressable LEDs.  These are unique RGB LEDs with an integral control circuit inside.  They are **not** your typical 3 colour LED with a common anode/cathode.
+### NEW! **- As an accessory product, I now also offer an easy to install remote mounted user interface.  It combines a remote pushbutton start switch and a super-bright status indicator LED pre-soldered to a printed circuit board ready to install on your airplane.  Check out all the details <a href="https://circuitflyer.com/Control_Panel/" target="_blank" rel="noopener noreferrer">HERE </a>**
+<br>
 
-NeoPixels have 4 connections; +5V, Ground, Data In and Data Out.  They are available in several different types and sizes of packages.  For this modification I suggest the diffused, 5mm diameter, through hole type NeoPixel.  A package of (5) NeoPixels be purchased from [Adafruit - 5mm Diffused][3] or [Sparkfun - 5mm Clear][4] as well as through other online retailers.
+The following information is provided if you would like to customise your installation and wire your own super-bright status LED to the timer.  
+
+NeoPixel is the name Adafruit uses to describe WS2812 addressable LEDs.  These are unique RGB LEDs with an integral control circuit inside.  They are **not** your typical 3 colour LED with a common anode/cathode.  The traditional 3-colour LEDs will not work with the timer.
+
+NeoPixels have 4 connections; +5V, Ground, Data In and Data Out.  They are available in several different types and sizes of packages.  For this modification I suggest the diffused, 5mm diameter, through hole type NeoPixel.  A package of (5) NeoPixels be purchased from [Adafruit - 5mm Diffused][3] or [Sparkfun - 5mm Clear][4] as well as through other online retailers.  If you purchase LEDs from another retailer you must refer to the supplier documentation for the LED as other manufacturers use different pin assignments, there is no industry standard pinout.
 
 Although you can wire the NeoPixel directly to the timer, it’s probably a good idea to attach it using a removable connector.  One suggestion is to use a JST-PH 2.0 3-pin connector.  This type of connector will always ensure proper polarity when connecting thing up.  Both [Adafruit - Cable Matching Pair][5] and [Sparkfun - Jumper Assembly][6] have some available.  It is advisable to keep the wire length as short as possible for your particular installation.
 
-The 5mm through hole NeoPixel connections:
+The Adafruit 5mm through hole NeoPixel connections:
 
 ![](assets/images/5mm Neopixel Connections.jpeg)  
 
@@ -50,7 +55,7 @@ Note the two short wires and two long wires.  the Data Out wire will not be used
 {: .highlight }
 The NeoPixel connections described above are not necessarily the ideal recommended connection circuitry but, it has been tested and works well in this particular case.
 
-Note 1: If you would like to use a different Neopixel or WS2812 LED other than the one suggested above, you may have to change the pixel order in the program code for it to illuminate the correct colours.  See below for details.
+Note 1: If you would like to use a different Neopixel or WS2812 LED other than the one suggested above, you may have to change the **pixel_colour** in the program code for it to illuminate the correct colours.  See below for details.
 
 Note 2: If you are also using the optional push-button start switch then there will be (2) wires connected to the ground pin (GND).  That is permissible as both the Neopixel and the switch share a common ground circuit.
 
