@@ -7,18 +7,18 @@
 {\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
 {\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}}
 {\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}}
-\margl1440\margr1440
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
 \deftab720
 \pard\pardeftab720\qc\partightenfactor0
 
-\f0\fs22 \cf2 \up0 \nosupersub \ulnone README\
+\f0\fs22 \cf2 README\
 \pard\pardeftab720\partightenfactor0
 \cf2 \
 Subject: Climb_and_Dive Control Line Timer\
 Release: V1.5\
-Date: June 2025\
+Date: June 2026\
 \
-Zipped file contents for V1.5.2:\
+Zipped file contents for V1.5.3:\
 \
 README.rtf\
 adafruit-circuitpython-Seeed_XIAO_nRF52840_Sense-en_US-7.3.3.uf2\
@@ -42,6 +42,10 @@ If you have questions or suggestions email me at {\field{\*\fldinst{HYPERLINK "m
 \
 Change log:\
 \
+V1.5.3\
+\
+- Increased the maximum motor pole count from 24 to 28\
+\
 V1.5.2\
 \
  - fixed intermittent start-up issue on CC Talon ESC\'92s, rolled spool-up code back to match v1.4\
@@ -64,26 +68,26 @@ V1.5\
 \
 \pard\tx20\tx203\pardeftab720\li203\fi-204\partightenfactor0
 \ls1\ilvl0
-\fs26\fsmilli13200 \cf2 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone Improved prop strike protection during initial spool-up period.\
+\fs26\fsmilli13200 \cf2 {\listtext	-	}
+\fs22 Improved prop strike protection during initial spool-up period.\
 \ls1\ilvl0
-\fs26\fsmilli13200 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone Removed fuse_axis correction.  Incorrect logic was used.\
+\fs26\fsmilli13200 {\listtext	-	}
+\fs22 Removed fuse_axis correction.  Incorrect logic was used.\
 \ls1\ilvl0
-\fs26\fsmilli13200 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone Added optional Neopixel functionality in parallel with Xiao LED status indicator.\
+\fs26\fsmilli13200 {\listtext	-	}
+\fs22 Added optional Neopixel functionality in parallel with Xiao LED status indicator.\
 \ls1\ilvl0
-\fs26\fsmilli13200 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone Refactored start-up throttle blip to use correct state machine logic.\
+\fs26\fsmilli13200 {\listtext	-	}
+\fs22 Refactored start-up throttle blip to use correct state machine logic.\
 \ls1\ilvl0
-\fs26\fsmilli13200 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone Increased default throttle setting for start-up blip to suit Castle Creations ESC\'92s.\
+\fs26\fsmilli13200 {\listtext	-	}
+\fs22 Increased default throttle setting for start-up blip to suit Castle Creations ESC\'92s.\
 \ls1\ilvl0
-\fs26\fsmilli13200 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone Reduced the duration of the start-up blip to 0.5 seconds.\
+\fs26\fsmilli13200 {\listtext	-	}
+\fs22 Reduced the duration of the start-up blip to 0.5 seconds.\
 \ls1\ilvl0
-\fs26\fsmilli13200 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone Relocated a few variable assignments to the top of the code for easy access.\
+\fs26\fsmilli13200 {\listtext	-	}
+\fs22 Relocated a few variable assignments to the top of the code for easy access.\
 \pard\pardeftab720\partightenfactor0
 \cf2 \
 \
@@ -91,20 +95,20 @@ V1.3, Oct 2023\
 \
 \pard\tx20\tx203\pardeftab720\li203\fi-204\partightenfactor0
 \ls2\ilvl0
-\fs26\fsmilli13200 \cf2 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone Added overhead boost functionality.\
+\fs26\fsmilli13200 \cf2 {\listtext	-	}
+\fs22 Added overhead boost functionality.\
 \ls2\ilvl0
-\fs26\fsmilli13200 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone Added logic to reduce delay for boost on sharp turns upward from level flight.\
+\fs26\fsmilli13200 {\listtext	-	}
+\fs22 Added logic to reduce delay for boost on sharp turns upward from level flight.\
 \ls2\ilvl0
-\fs26\fsmilli13200 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone Limited the maximum peak RPM boost point.\
+\fs26\fsmilli13200 {\listtext	-	}
+\fs22 Limited the maximum peak RPM boost point.\
 \ls2\ilvl0
-\fs26\fsmilli13200 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone Added requirement for a \'93calibration lap\'94 at start of flight.\
+\fs26\fsmilli13200 {\listtext	-	}
+\fs22 Added requirement for a \'93calibration lap\'94 at start of flight.\
 \ls2\ilvl0
-\fs26\fsmilli13200 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone Replaced output IIR filter with a digital FIR filter.\
+\fs26\fsmilli13200 {\listtext	-	}
+\fs22 Replaced output IIR filter with a digital FIR filter.\
 \pard\pardeftab720\partightenfactor0
 \cf2 \
 \
@@ -112,23 +116,23 @@ V1.2, May 2023\
 \
 \pard\tx20\tx203\pardeftab720\li203\fi-204\partightenfactor0
 \ls3\ilvl0
-\fs26\fsmilli13200 \cf2 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone Added different mounting orientation functionality.\
+\fs26\fsmilli13200 \cf2 {\listtext	-	}
+\fs22 Added different mounting orientation functionality.\
 \ls3\ilvl0
-\fs26\fsmilli13200 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone General code refactoring for cleanup and housekeeping.\
+\fs26\fsmilli13200 {\listtext	-	}
+\fs22 General code refactoring for cleanup and housekeeping.\
 \ls3\ilvl0
-\fs26\fsmilli13200 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone Fixed BLE advertising error for some devices.\
+\fs26\fsmilli13200 {\listtext	-	}
+\fs22 Fixed BLE advertising error for some devices.\
 \ls3\ilvl0
-\fs26\fsmilli13200 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone Added debounce to PB switch.\
+\fs26\fsmilli13200 {\listtext	-	}
+\fs22 Added debounce to PB switch.\
 \ls3\ilvl0
-\fs26\fsmilli13200 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone Added optional run time after RPM boost at end of flight.\
+\fs26\fsmilli13200 {\listtext	-	}
+\fs22 Added optional run time after RPM boost at end of flight.\
 \ls3\ilvl0
-\fs26\fsmilli13200 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone Added a 5 second delay to active function after motor start for better take off.\
+\fs26\fsmilli13200 {\listtext	-	}
+\fs22 Added a 5 second delay to active function after motor start for better take off.\
 \pard\pardeftab720\partightenfactor0
 \cf2 \
 \
@@ -136,11 +140,11 @@ V1.1, Apr 2023\
 \
 \pard\tx20\tx203\pardeftab720\li203\fi-204\partightenfactor0
 \ls4\ilvl0
-\fs26\fsmilli13200 \cf2 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone For beta testing only, not officially released.\
+\fs26\fsmilli13200 \cf2 {\listtext	-	}
+\fs22 For beta testing only, not officially released.\
 \ls4\ilvl0
-\fs26\fsmilli13200 \up0 \nosupersub \ulnone {\listtext	-	}
-\fs22 \up0 \nosupersub \ulnone Adjusted filter gains\
+\fs26\fsmilli13200 {\listtext	-	}
+\fs22 Adjusted filter gains\
 \pard\pardeftab720\partightenfactor0
 \cf2 \
 \

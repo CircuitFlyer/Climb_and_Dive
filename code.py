@@ -7,7 +7,7 @@
 #  microcontroller development board to create a timed PWM servo signal with accelerometer input, PID RPM control
 #  and Bluetooth LE programming suitable to conduct a typical flight of an electric powered control line model aircraft.
 
-# Timer Program Version: 1.5.2, June 2025
+# Timer Program Version: 1.5.3, June 2026
 # Microcontroller Board: Seeed Studio Xiao BLE, https://wiki.seeedstudio.com/XIAO_BLE/
 # Firmware: CircuitPython 7.3.3, https://circuitpython.org/board/Seeed_XIAO_nRF52840_Sense/
 # Backpack Hardware Version: 3.2
@@ -15,7 +15,7 @@
 """
 MIT License
 
-Copyright (c) 2025 CircuitFlyer (aka - Paul Emmerson) - Climb_and_Dive
+Copyright (c) 2026 CircuitFlyer (aka - Paul Emmerson) - Climb_and_Dive
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -66,7 +66,7 @@ Please read the instructions "Advanced Modifications" for more information.
 blip_duration = 0.5  # time in seconds for the duration of the start-up throttle blip
 blip_PWM = 1150  # throttle setting used for the short duration throttle blip
 touch_pin_sensitivity = 100  # threshold value to trigger the touch pin
-timer_name = "Climb & Dive v1.5.2"  # name displayed on the Bluetooth app screen, max 26 characters
+timer_name = "Climb & Dive v1.5.3"  # name displayed on the Bluetooth app screen, max 26 characters
 pixel_colour = "RGB"  # order of the colours used in your Neopixel
 glide_boost = 3  # time in seconds for the duration of higher RPM at the end of the flight
 corner_boost_duration = 0.6  # time in seconds for the duration of the higher RPM boost in bottom corners
@@ -549,7 +549,7 @@ def input_ble_settings(choice):
                     new_setting = min(10, max(0, new_setting))  # constrain output, dive gain setting 0-10
                     dive_gain = new_setting
                 if choice == 6:
-                    new_setting = min(24, max(2, new_setting))  # constrain output, number of motor magnets 2 to 24
+                    new_setting = min(28, max(2, new_setting))  # constrain output, number of motor magnetic poles 2 to 28
                     number_of_poles = new_setting
                 if choice == 7:
                     new_setting = min(10, max(1, new_setting))  # constrain output, motor acceleration setting 1 to 10
