@@ -10,15 +10,15 @@ nav_order: 4
 
 One of the great features of the Climb_and_Dive timer is the ability to update the program code as new features and improvements become available.
 
-**Note:** All Xiao NRF52840 microcontroller boards supplied through the Tindie shop are shipped ready to assemble with the latest timer program already installed and tested.  Software installation is not required and you can skip ahead to the Bluetooth app installation.
+**Note:** All Xiao NRF52840 microcontroller boards supplied through the Lectronz shop are shipped ready to assemble with the latest timer program already installed and tested.  Software installation is not required and you can skip ahead to the Bluetooth app installation.
 
 The instructions below cover two separate procedures.  The first procedure is used for a quick update to the existing program code when a newer version is released.  The second procedure is used for a more in-depth update or if you purchased a blank Xiao microcontroller board from another source.
 
 {: .highlight}
-Be sure to check here from time to time to make sure you are using the most up to date version of the program code.  **Latest Version: v1.5.2**  Note: if upgrading from a previous version it is always a good idea to update both **code.py** AND the **lib** folder (Step 6 below).  See the **README** included in the download for details.
+Be sure to check here from time to time to make sure you are using the most up to date version of the program code.  **Latest Version: v1.5.3**  Note: if upgrading from a previous version it is always a good idea to update both **code.py** AND the **lib** folder (Step 6 below).  See the **README** included in the download for details.
 
 <span class="fs-6">
-[Click Here to download the latest program code .zip file](https://github.com/CircuitFlyer/Climb_and_Dive/archive/v1.5.2.zip){: .btn .btn-blue }
+[Click Here to download the latest program code .zip file](https://github.com/CircuitFlyer/Climb_and_Dive/archive/v1.5.3.zip){: .btn .btn-blue }
 </span>
 
 The current version installed on your timer is shown in the name of the device that appears when you connect to it via the Bluetooth app.

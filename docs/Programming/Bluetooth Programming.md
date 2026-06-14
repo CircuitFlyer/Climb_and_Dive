@@ -59,7 +59,7 @@ The table below summarizes the programmable settings available and their default
 | Climb Gain | 0 to 10 | 5 |
 | Dive Gain | 0 to 10 | 5 |
 | Motor Acceleration | 1 to 10 | 5 |
-| Number of Motor Poles | 2 to 24 | 14 |
+| Number of Motor Poles | 2 to 28 | 14 |
 | Last Lap Time | 0 to 10 | 0 |
 | Mounting Position| - | +Z, -X |
 | & Calibration| - | 0.0, 0.0 |
